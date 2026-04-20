@@ -1,1 +1,544 @@
-hello world
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Academic profile and personal website for Austen G. W. Wallis, astrophysics PhD researcher working on machine learning, inference, and scientific software.">
+  <title>Austen Wallis | Astrophysics and Machine Learning</title>
+  <link rel="shortcut icon" href="./assets/images/logo.ico" type="image/x-icon">
+  <link rel="stylesheet" href="./assets/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600;6..72,700&display=swap"
+    rel="stylesheet">
+</head>
+
+<body>
+  <div class="page-shell">
+    <div class="ambient ambient-one" aria-hidden="true"></div>
+    <div class="ambient ambient-two" aria-hidden="true"></div>
+
+    <aside class="profile-card" data-sidebar>
+      <div class="profile-header">
+        <figure class="profile-mark">
+          <img src="./assets/images/me.png" alt="Headshot of Austen Wallis">
+        </figure>
+
+        <div class="profile-copy">
+          <p class="eyebrow">Astrophysics, machine learning, scientific software</p>
+          <h1>Austen G. W. Wallis</h1>
+          <p class="role">
+            Computational astrophysics PhD researcher at the University of Southampton.
+          </p>
+        </div>
+
+        <button class="profile-toggle" type="button" data-sidebar-btn aria-expanded="false">Show contacts</button>
+      </div>
+
+      <div class="profile-details">
+        <ul class="fact-list">
+          <li>
+            <span>Base</span>
+            <strong>Southampton, UK</strong>
+          </li>
+          <li>
+            <span>Current role</span>
+            <strong>PhD Researcher, Sept 2022 - Expected Q3 2026</strong>
+          </li>
+          <li>
+            <span>ORCID iD</span>
+            <strong><a class="text-link" href="https://orcid.org/0000-0003-0770-9015" target="_blank" rel="noopener noreferrer">0000-0003-0770-9015</a></strong>
+          </li>
+        </ul>
+
+        <div class="cta-row">
+          <a class="button button-primary" href="./Academic_CV.pdf" target="_blank" rel="noreferrer">Download CV</a>
+          <a class="button button-secondary" href="mailto:A.Wallis@soton.ac.uk">Email Austen</a>
+        </div>
+
+        <div class="profile-panel">
+          <h2>Current project</h2>
+          <p>
+            Building emulator-based inference methods for radiative-transfer models that cut expensive workflows from
+            millions of compute hours to minutes.
+          </p>
+        </div>
+
+        <ul class="social-links">
+          <li><a href="https://linkedin.com/in/austenwallis" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+          <li><a href="https://github.com/AustenWallis" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+          <li><a href="https://huggingface.co/AustenWallis" target="_blank" rel="noopener noreferrer">Hugging Face</a></li>
+        </ul>
+      </div>
+    </aside>
+
+    <main class="content-panel">
+      <nav class="site-nav" aria-label="Primary">
+        <button class="nav-link active" type="button" data-nav-link data-target="about" aria-current="page">About</button>
+        <button class="nav-link" type="button" data-nav-link data-target="cv">CV</button>
+        <button class="nav-link" type="button" data-nav-link data-target="places">Places</button>
+        <button class="nav-link" type="button" data-nav-link data-target="contact">Contact</button>
+      </nav>
+
+      <article class="page-section active" data-page="about" id="about">
+        <section class="hero">
+          <p class="section-kicker">Computational astrophysics</p>
+          <h2>Fast inference for complex astrophysical winds.</h2>
+          <p class="section-intro">
+            I build machine-learning emulators and inference tools for radiative-transfer problems in accretion
+            outflows. The goal is to keep the physics serious while making the models fast enough to use routinely.
+          </p>
+        </section>
+
+        <section class="highlights-panel" aria-labelledby="research-highlights-title">
+          <div class="stats-heading">
+            <h3 id="research-highlights-title">Research Highlights</h3>
+            <p class="stats-note">Click a card to flip for detail.</p>
+          </div>
+
+          <div class="stats-grid" aria-label="Research highlights">
+            <button class="stat-card flip-card" type="button" data-flip-card aria-pressed="false">
+              <span class="flip-card-inner">
+                <span class="flip-card-face flip-card-front">
+                  <span class="stat-logo">PAPERS</span>
+                  <span class="stat-front-copy">
+                    <span class="stat-front-label">Peer-reviewed papers</span>
+                    <strong class="stat-front-value" data-publication-count>4</strong>
+                  </span>
+                  <span class="flip-prompt">Click to flip</span>
+                </span>
+
+                <span class="flip-card-face flip-card-back">
+                  <span class="stat-back-label">Peer-reviewed papers</span>
+                  <p>Live publication count pulled from the ORCID record.</p>
+                </span>
+              </span>
+            </button>
+
+            <button class="stat-card flip-card" type="button" data-flip-card aria-pressed="false">
+              <span class="flip-card-inner">
+                <span class="flip-card-face flip-card-front">
+                  <span class="stat-logo">BIG DATA</span>
+                  <span class="stat-front-copy">
+                    <span class="stat-front-label">Synthetic library</span>
+                    <strong class="stat-front-value">164k+</strong>
+                  </span>
+                  <span class="flip-prompt">Click to flip</span>
+                </span>
+
+                <span class="flip-card-face flip-card-back">
+                  <span class="stat-back-label">Synthetic library</span>
+                  <p>Released spectra for rapid analysis of accretion-driven outflows.</p>
+                </span>
+              </span>
+            </button>
+
+            <button class="stat-card flip-card" type="button" data-flip-card aria-pressed="false">
+              <span class="flip-card-inner">
+                <span class="flip-card-face flip-card-front">
+                  <span class="stat-logo">FAST INFERENCE</span>
+                  <span class="stat-front-copy">
+                    <span class="stat-front-label">Surrogate acceleration</span>
+                    <strong class="stat-front-value">2M x</strong>
+                  </span>
+                  <span class="flip-prompt">Click to flip</span>
+                </span>
+
+                <span class="flip-card-face flip-card-back">
+                  <span class="stat-back-label">Surrogate acceleration</span>
+                  <p>Speed-up achieved in UKAEA plasma-pressure modelling research.</p>
+                </span>
+              </span>
+            </button>
+
+            <button class="stat-card flip-card" type="button" data-flip-card aria-pressed="false">
+              <span class="flip-card-inner">
+                <span class="flip-card-face flip-card-front">
+                  <span class="stat-logo">TEACH</span>
+                  <span class="stat-front-copy">
+                    <span class="stat-front-label">Students supported</span>
+                    <strong class="stat-front-value">150+</strong>
+                  </span>
+                  <span class="flip-prompt">Click to flip</span>
+                </span>
+
+                <span class="flip-card-face flip-card-back">
+                  <span class="stat-back-label">Students supported</span>
+                  <p>Mentored in scientific Python, data analysis, and evidence-based physics.</p>
+                </span>
+              </span>
+            </button>
+          </div>
+        </section>
+
+        <section class="info-card">
+          <div class="publication-header">
+            <div>
+              <p class="kicker-chip">From ORCID</p>
+              <h3>Recent papers</h3>
+            </div>
+
+            <a class="text-link" href="https://orcid.org/0000-0003-0770-9015" target="_blank" rel="noopener noreferrer">View ORCID</a>
+          </div>
+
+          <div class="publication-list" data-orcid-list>
+            <p class="publication-status">Loading recent papers from ORCID...</p>
+          </div>
+        </section>
+      </article>
+
+      <article class="page-section" data-page="cv" id="cv" hidden>
+        <section class="section-header">
+          <p class="section-kicker">Curriculum vitae</p>
+          <div class="section-header-row">
+            <div>
+              <h2>What I've done ...</h2>
+              <p class="section-intro">
+                Selected research, publications, teaching, and technical work.
+              </p>
+            </div>
+
+            <a class="button button-primary" href="./Academic_CV.pdf" target="_blank" rel="noreferrer">Open full CV</a>
+          </div>
+        </section>
+
+        <section class="cv-layout">
+          <div class="timeline-block">
+            <h3>Education</h3>
+            <ol class="timeline">
+              <li class="timeline-item">
+                <h4>PhD in Astrophysics</h4>
+                <span class="timeline-meta">University of Southampton | Sept 2022 - Expected Q3 2026</span>
+                <p>
+                  Thesis: <strong>Emulator-based inference of imperfect and complex astrophysical models: Reducing
+                    Millions of Computational Hours to Minutes</strong>.
+                </p>
+              </li>
+
+              <li class="timeline-item">
+                <h4>MPhys in Astrophysics with a Year of Research</h4>
+                <span class="timeline-meta">University of Southampton | Sept 2017 - July 2021</span>
+                <p>
+                  First class honours with an 80% average. Final-year thesis on calibrating a new cosmological standard
+                  candle using active galactic nuclei.
+                </p>
+              </li>
+            </ol>
+          </div>
+
+          <div class="timeline-block">
+            <h3>Research and industry</h3>
+            <ol class="timeline">
+              <li class="timeline-item">
+                <h4>Postgraduate Researcher</h4>
+                <span class="timeline-meta">University of Southampton | Sept 2022 - Present</span>
+                <p>
+                  Developed <strong>speculate</strong>, refined outflow diagnostics, and released a synthetic spectral
+                  library for rapid physical inference.
+                </p>
+              </li>
+
+              <li class="timeline-item">
+                <h4>AI Research Scientist</h4>
+                <span class="timeline-meta">IBM Research, Daresbury | June 2025 - Sept 2025</span>
+                <p>
+                  Worked on non-gradient optimisation in PDE solution spaces and large-scale synthetic weather data for
+                  the IBM-NASA Prithvi effort.
+                </p>
+              </li>
+
+              <li class="timeline-item">
+                <h4>Machine Learning Research Scientist</h4>
+                <span class="timeline-meta">UK Atomic Energy Authority, Culham | June 2024 - Sept 2024</span>
+                <p>
+                  Built a deep-ensemble surrogate for plasma-pressure prediction that was dramatically faster and more
+                  accurate than the baseline approach.
+                </p>
+              </li>
+
+              <li class="timeline-item">
+                <h4>Student Researcher</h4>
+                <span class="timeline-meta">IAC and University of La Laguna, Tenerife | Jan 2019 - June 2019</span>
+                <p>
+                  Studied Jupiter's mass and rotational flattening while gaining observatory experience on the IAC-80,
+                  TCS, and Mons facilities.
+                </p>
+              </li>
+            </ol>
+          </div>
+        </section>
+
+        <section class="split-grid">
+          <div class="info-card">
+            <h3>Awards</h3>
+            <ul class="bullet-list">
+              <li>STAG Research Prize for Best Publication in Astrophysics, 2025.</li>
+              <li>Best PhD Poster, SEPnet Employers Exhibition, 2024.</li>
+              <li>Second place, DISCnet LIV.INNO ML Kaggle competition, 2024.</li>
+              <li>2025 IBMer watsonx Challenger.</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h3>Teaching and talks</h3>
+            <ul class="bullet-list">
+              <li>PHYS2022 demonstrator, mentoring 150+ students in scientific Python and data analysis.</li>
+              <li>PHYS2011 teaching assistant across 57 workshop hours in astronomy design and observation.</li>
+              <li>Speaker at RAS ML/AI Astronomy, PyData Southampton, PyData London, and other research venues.</li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="info-card">
+          <div class="publication-header">
+            <div>
+              <p class="kicker-chip">Featured on ORCID</p>
+              <h3>Featured publications</h3>
+            </div>
+
+            <a class="text-link" href="https://orcid.org/0000-0003-0770-9015" target="_blank" rel="noopener noreferrer">View ORCID</a>
+          </div>
+
+          <div class="publication-list">
+            <a href="https://doi.org/10.1093/mnras/staf1450" target="_blank" rel="noopener noreferrer">
+              <strong>A diagnostic kit for optical emission lines shaped by accretion disc winds</strong>
+              <span>Monthly Notices of the Royal Astronomical Society · 2025</span>
+            </a>
+
+            <a href="https://doi.org/10.1093/mnras/stae2677" target="_blank" rel="noopener noreferrer">
+              <strong>SIROCCO: a publicly available Monte Carlo ionization and radiative transfer code for astrophysical outflows</strong>
+              <span>Monthly Notices of the Royal Astronomical Society · 2024</span>
+            </a>
+          </div>
+        </section>
+
+        <section class="info-card">
+          <p class="kicker-chip">Technical stack</p>
+          <h3>Tools I use regularly</h3>
+          <ul class="pill-list">
+            <li>Python</li>
+            <li>C</li>
+            <li>Julia</li>
+            <li>TensorFlow</li>
+            <li>PyTorch</li>
+            <li>JAX</li>
+            <li>Scikit-Learn</li>
+            <li>NumPy</li>
+            <li>SciPy</li>
+            <li>Pandas</li>
+            <li>Polars</li>
+            <li>Dask</li>
+            <li>Xarray</li>
+            <li>Matplotlib</li>
+            <li>Vega-Altair</li>
+            <li>Streamlit</li>
+            <li>Jupyter</li>
+            <li>Marimo</li>
+            <li>Git</li>
+            <li>Linux</li>
+            <li>SLURM</li>
+            <li>LSF</li>
+          </ul>
+        </section>
+      </article>
+
+      <article class="page-section" data-page="places" id="places" hidden>
+        <section class="section-header">
+          <p class="section-kicker">Places</p>
+          <h2>Where my work has taken me ...</h2>
+          <p class="section-intro">
+            A few places tied to the PhD, observatory work, industry placements, talks, and public-facing events.
+          </p>
+        </section>
+
+        <section class="places-grid">
+          <figure class="place-card place-card-feature place-card-feature-left">
+            <img src="./assets/images/places/southampton.JPG" alt="Group photo in Southampton">
+            <figcaption>
+              <span class="place-meta">Research base</span>
+              <h3>Southampton, UK</h3>
+              <p>A department group photo from Southampton, where most of my PhD, teaching, and day-to-day research work happens.</p>
+            </figcaption>
+          </figure>
+
+          <figure class="place-card">
+            <img src="./assets/images/places/tenerife.jpeg" alt="Austen Wallis in an observatory in Tenerife">
+            <figcaption>
+              <span class="place-meta">Observatory work</span>
+              <h3>Tenerife, Spain</h3>
+              <p>Night-time observatory work from my student research period with the IAC and the University of La Laguna.</p>
+            </figcaption>
+          </figure>
+
+          <figure class="place-card">
+            <img src="./assets/images/places/culham-fixed.jpg" alt="Austen Wallis at Culham">
+            <figcaption>
+              <span class="place-meta">UKAEA placement</span>
+              <h3>Culham, UK</h3>
+              <p>From my UKAEA placement, where I worked on surrogate modelling for plasma-pressure prediction.</p>
+            </figcaption>
+          </figure>
+
+          <figure class="place-card place-card-feature place-card-feature-right">
+            <img src="./assets/images/places/daresbury.jpg" alt="Austen Wallis at the Hartree Centre in Daresbury">
+            <figcaption>
+              <span class="place-meta">IBM Research placement</span>
+              <h3>Daresbury, UK</h3>
+              <p>At the Hartree Centre during my IBM Research placement, focused on optimisation and weather-scale machine-learning workflows.</p>
+            </figcaption>
+          </figure>
+
+          <figure class="place-card place-card-feature place-card-feature-left">
+            <img src="./assets/images/places/IBM%20Dublin.JPG" alt="Austen Wallis speaking at Trinity College Dublin">
+            <figcaption>
+              <span class="place-meta">Talk</span>
+              <h3>Trinity College Dublin</h3>
+              <p>Speaking about the WRF Weather Forge and global-scale forecasting work during my IBM Research period.</p>
+            </figcaption>
+          </figure>
+
+          <figure class="place-card">
+            <img src="./assets/images/places/winchester.jpg" alt="Austen Wallis in Winchester">
+            <figcaption>
+              <span class="place-meta">Local work</span>
+              <h3>Winchester, UK</h3>
+              <p>A quieter point on the map tied to part-time planning and development work with Wallco alongside the PhD.</p>
+            </figcaption>
+          </figure>
+
+          <figure class="place-card">
+            <img src="./assets/images/places/pydata_southampton.jpeg" alt="Austen Wallis speaking at PyData Southampton">
+            <figcaption>
+              <span class="place-meta">Community talk</span>
+              <h3>PyData Southampton</h3>
+              <p>Sharing work on machine learning and scientific computing with the local data and software community.</p>
+            </figcaption>
+          </figure>
+
+          <figure class="place-card place-card-feature place-card-feature-right">
+            <img src="./assets/images/places/pydata%20London%20Lightening%202024.jpeg" alt="Audience view during Austen Wallis's PyData London 2024 lightning talk">
+            <figcaption>
+              <span class="place-meta">Lightning talk</span>
+              <h3>PyData London 2024</h3>
+              <p>Speaking to the wider Python and data community in London, sharing research-facing machine-learning work in a fast-paced conference setting.</p>
+            </figcaption>
+          </figure>
+
+          <figure class="place-card place-card-feature place-card-feature-left">
+            <img src="./assets/images/places/GRADnet_Award.jpeg" alt="Austen Wallis receiving an award at GRADnet 2024">
+            <figcaption>
+              <span class="place-meta">Award</span>
+              <h3>GRADnet Award</h3>
+              <p>Receiving the Best PhD Poster award at the SEPnet Employers Exhibition during GRADnet 2024.</p>
+            </figcaption>
+          </figure>
+
+          <figure class="place-card">
+            <img src="./assets/images/places/GRADnet2024.JPG" alt="Group photo at GRADnet 2024">
+            <figcaption>
+              <span class="place-meta">Network event</span>
+              <h3>GRADnet 2024</h3>
+              <p>A snapshot from the wider graduate-research community surrounding my PhD years in Southampton.</p>
+            </figcaption>
+          </figure>
+
+          <figure class="place-card">
+            <img src="./assets/images/places/STEM_4_Britian_2026.JPG" alt="Austen Wallis at STEM for Britain 2026">
+            <figcaption>
+              <span class="place-meta">Showcase</span>
+              <h3>STEM for Britain 2026</h3>
+              <p>Presenting research in the UK Parliament during STEM for Britain, with MPs attending to engage with the work directly.</p>
+            </figcaption>
+          </figure>
+
+          <figure class="place-card place-card-feature place-card-feature-right">
+            <img src="./assets/images/places/STAG%20PRIZE.png" alt="Austen Wallis receiving the STAG Research Prize">
+            <figcaption>
+              <span class="place-meta">Award</span>
+              <h3>STAG Research Prize</h3>
+              <p>Receiving the award for Best Publication in Astrophysics.</p>
+            </figcaption>
+          </figure>
+        </section>
+      </article>
+
+      <article class="page-section" data-page="contact" id="contact" hidden>
+        <section class="section-header">
+          <p class="section-kicker">Contact</p>
+          <h2>Open to research conversations, collaboration, and technical discussion.</h2>
+          <p class="section-intro">
+            For research collaboration, speaking, or technical work, email is the fastest route.
+          </p>
+        </section>
+
+        <section class="contact-grid">
+          <div class="info-card">
+            <p class="kicker-chip">Reach out</p>
+            <h3>Best ways to contact me</h3>
+            <ul class="contact-list">
+              <li>
+                <span>Email</span>
+                <a href="mailto:A.Wallis@soton.ac.uk">A.Wallis@soton.ac.uk</a>
+              </li>
+              <li>
+                <span>Affiliation</span>
+                <p>University of Southampton</p>
+              </li>
+              <li>
+                <span>LinkedIn</span>
+                <a href="https://linkedin.com/in/austenwallis" target="_blank" rel="noopener noreferrer">linkedin.com/in/austenwallis</a>
+              </li>
+              <li>
+                <span>GitHub</span>
+                <a href="https://github.com/AustenWallis" target="_blank" rel="noopener noreferrer">github.com/AustenWallis</a>
+              </li>
+              <li>
+                <span>Hugging Face</span>
+                <a href="https://huggingface.co/AustenWallis" target="_blank" rel="noopener noreferrer">huggingface.co/AustenWallis</a>
+              </li>
+              <li>
+                <span>ORCID</span>
+                <a href="https://orcid.org/0000-0003-0770-9015" target="_blank" rel="noopener noreferrer">0000-0003-0770-9015</a>
+              </li>
+            </ul>
+          </div>
+
+          <form class="contact-form" data-contact-form>
+            <h3>Send a message</h3>
+
+            <label class="field">
+              <span>Name</span>
+              <input type="text" name="name" autocomplete="name" required>
+            </label>
+
+            <label class="field">
+              <span>Email</span>
+              <input type="email" name="email" autocomplete="email" required>
+            </label>
+
+            <label class="field">
+              <span>Subject</span>
+              <input type="text" name="subject" required>
+            </label>
+
+            <label class="field">
+              <span>Message</span>
+              <textarea name="message" rows="6" required></textarea>
+            </label>
+
+            <button class="button button-primary button-full" type="submit" data-form-btn disabled>Open email draft</button>
+            <p class="footer-note">Opens a pre-filled email draft.</p>
+          </form>
+        </section>
+      </article>
+    </main>
+  </div>
+
+  <script src="./assets/js/script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,47 @@
+Austen Wallis
+Astrophysics, machine learning, scientific software
+
+Sections
+- About
+- CV
+- Places
+- Contact
+
+About
+PhD researcher at the University of Southampton building emulator-based inference tools for complex astrophysical outflows.
+
+Highlights
+- 164k+ synthetic spectra released for rapid outflow analysis
+- 4 peer-reviewed publications
+- 2M x surrogate acceleration in UKAEA research
+- 150+ students mentored in scientific Python and data analysis
+
+CV
+Education
+- PhD in Astrophysics, University of Southampton, Sept 2022 - Expected Q3 2026
+- MPhys in Astrophysics with a Year of Research, University of Southampton, Sept 2017 - July 2021
+
+Research and industry
+- Postgraduate Researcher, University of Southampton, Sept 2022 - Present
+- AI Research Scientist, IBM Research, Daresbury, June 2025 - Sept 2025
+- Machine Learning Research Scientist, UKAEA, Culham, June 2024 - Sept 2024
+- Student Researcher, IAC and University of La Laguna, Tenerife, Jan 2019 - June 2019
+
+Selected publications
+- A diagnostic kit for optical emission lines shaped by accretion disc winds, MNRAS 2025
+- The critical role of clumping in line-driven disc winds, MNRAS 2025
+- Monte Carlo radiation hydrodynamic simulations of line-driven disc winds, MNRAS 2025
+- SIROCCO: a publicly available Monte Carlo ionization and radiative transfer code, MNRAS 2024
+
+Places
+- Southampton, UK
+- Tenerife, Spain
+- Culham, UK
+- Daresbury, UK
+- Winchester, UK
+
+Contact
+- Email: A.Wallis@soton.ac.uk
+- LinkedIn: linkedin.com/in/austenwallis
+- GitHub: github.com/AustenWallis
+- Hugging Face: huggingface.co/AustenWallis
