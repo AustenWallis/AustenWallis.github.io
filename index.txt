@@ -11,9 +11,9 @@ About
 PhD researcher at the University of Southampton building emulator-based inference tools for complex astrophysical outflows.
 
 Highlights
-- 164k+ synthetic spectra released for rapid outflow analysis
-- 4 peer-reviewed publications
-- 2M x surrogate acceleration in UKAEA research
+- 100k+ synthetic spectra released for rapid outflow analysis
+- 5 peer-reviewed publications
+- 2Mx surrogate acceleration in UKAEA research
 - 150+ students mentored in scientific Python and data analysis
 
 CV
