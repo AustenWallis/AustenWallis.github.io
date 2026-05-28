@@ -39,6 +39,7 @@ Places
 - Culham, UK
 - Daresbury, UK
 - Winchester, UK
+- FEPS 3MT Runner-Up, Accelerating Astronomical Discoveries with AI Emulators
 
 Contact
 - Email: A.Wallis@soton.ac.uk
