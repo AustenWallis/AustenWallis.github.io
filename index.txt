@@ -8,7 +8,7 @@ Sections
 - Contact
 
 About
-I build machine-learning tools that make complex scientific models faster and more useful, combining accelerated computing, simulation emulators, Bayesian inference, and uncertainty quantification. My projects have spanned astrophysics, fusion research, and weather modelling.
+I develop machine-learning tools and scientific software for complex physical systems. My work combines accelerated computing and simulation emulators to make models faster, with Bayesian inference and uncertainty quantification to connect them with data. I have applied these methods in astrophysics, fusion research, and weather modelling.
 
 Current research
 Research Assistant in Exoplanetary Remote Sensing and Data Science at the University of Cambridge. Working on M-dwarf spectra, stellar variability, and exoplanet-atmosphere inference with JWST data. Completing doctoral research at the University of Southampton.
