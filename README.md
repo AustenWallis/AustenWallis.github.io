@@ -28,4 +28,18 @@ To update it:
 
 ## Local preview
 
-Open `index.html` directly in a browser, or publish through GitHub Pages as normal.
+Open this folder in VS Code (`File` > `Open Folder…`). Select the `AustenWallis.github.io` folder, then open `index.html` in the Explorer.
+
+In the VS Code terminal (`Terminal` > `New Terminal`), run:
+
+```sh
+python3 -m http.server 8000
+```
+
+Visit `http://localhost:8000/` in a browser. Changes to HTML, CSS, or JavaScript appear after a browser refresh. Press Ctrl+C in the terminal to stop the server.
+
+## Search visibility
+
+The canonical public URL is `https://austenwallis.github.io/`. The root `sitemap.xml` lists that page, and `robots.txt` points crawlers to the sitemap.
+
+After publishing changes, verify the `https://austenwallis.github.io/` URL-prefix property in Google Search Console, submit `https://austenwallis.github.io/sitemap.xml`, and use URL Inspection to check the homepage and request indexing. An HTML verification tag from Search Console can be placed in the `<head>` of `index.html`; keep it there after verification.

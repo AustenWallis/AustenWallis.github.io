@@ -126,7 +126,7 @@ function createPublicationCard(work) {
 function createPublicationFallback() {
   const message = document.createElement('p');
   message.className = 'publication-status';
-  message.textContent = 'Recent papers are unavailable right now. ';
+  message.textContent = 'Recent work is unavailable right now. ';
 
   const link = document.createElement('a');
   link.className = 'text-link';
@@ -226,7 +226,7 @@ if (contactForm && formButton) {
       `Reply to: ${email}`,
     ].join('\n');
 
-    window.location.href = `mailto:A.Wallis@soton.ac.uk?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    window.location.href = `mailto:agww2@cam.ac.uk?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   });
 }
 

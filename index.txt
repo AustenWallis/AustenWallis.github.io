@@ -1,5 +1,5 @@
 Austen Wallis
-Astrophysics, machine learning, scientific software
+Exoplanets, spectral modelling, scientific machine learning
 
 Sections
 - About
@@ -8,21 +8,31 @@ Sections
 - Contact
 
 About
-PhD researcher at the University of Southampton building emulator-based inference tools for complex astrophysical outflows.
+I build machine-learning tools that make complex scientific models faster and more useful, combining accelerated computing, simulation emulators, Bayesian inference, and uncertainty quantification. My projects have spanned astrophysics, fusion research, and weather modelling.
+
+Current research
+Research Assistant in Exoplanetary Remote Sensing and Data Science at the University of Cambridge. Working on M-dwarf spectra, stellar variability, and exoplanet-atmosphere inference with JWST data. Completing doctoral research at the University of Southampton.
+
+Methods
+- Accelerated computing and physical modelling
+- Machine-learning emulators
+- Bayesian inference and uncertainty quantification
+- Scientific software
 
 Highlights
 - 100k+ synthetic spectra released for rapid outflow analysis
-- 5 peer-reviewed publications
+- Research outputs listed on ORCID
 - 2Mx surrogate acceleration in UKAEA research
 - 150+ students mentored in scientific Python and data analysis
 
 CV
 Education
-- PhD in Astrophysics, University of Southampton, Sept 2022 - Expected Q3 2026
+- PhD candidate in Astrophysics, University of Southampton, Sept 2022 - Present
 - MPhys in Astrophysics with a Year of Research, University of Southampton, Sept 2017 - July 2021
 
 Research and industry
-- Postgraduate Researcher, University of Southampton, Sept 2022 - Present
+- Research Assistant in Exoplanetary Remote Sensing and Data Science, University of Cambridge, Sept 2026 - Present
+- Postgraduate Researcher, University of Southampton, Sept 2022 - Present (doctoral research nearing submission)
 - AI Research Scientist, IBM Research, Daresbury, June 2025 - Sept 2025
 - Machine Learning Research Scientist, UKAEA, Culham, June 2024 - Sept 2024
 - Student Researcher, IAC and University of La Laguna, Tenerife, Jan 2019 - June 2019
@@ -42,7 +52,8 @@ Places
 - FEPS 3MT Runner-Up, Accelerating Astronomical Discoveries with AI Emulators
 
 Contact
-- Email: A.Wallis@soton.ac.uk
+- Email: agww2@cam.ac.uk
+- Cambridge profile: ast.cam.ac.uk/people/austen.wallis
 - LinkedIn: linkedin.com/in/austenwallis
 - GitHub: github.com/AustenWallis
 - Hugging Face: huggingface.co/AustenWallis
