@@ -55,6 +55,11 @@ test('release velocity distinguishes a quick throw from a paused placement', () 
   assert.deepEqual(P.releaseVelocity(samples.slice(-1), 1100), { vx: 0, vy: 0 });
 });
 
+test('a flick sampled within one high-refresh frame keeps its release velocity', () => {
+  assert.deepEqual(P.releaseVelocity([{ x: 300, y: 200, t: 1000 }, { x: 292, y: 192, t: 1008 }], 1008), { vx: -1000, vy: -1000 });
+  assert.deepEqual(P.releaseVelocity([{ x: 300, y: 200, t: 1000 }, { x: 292, y: 192, t: 1000 }], 1000), { vx: 0, vy: 0 });
+});
+
 test('resizing and invalid saved coordinates cannot strand the pet outside the viewport', () => {
   const b = P.create(Infinity, NaN);
   P.constrain(b, bounds);

@@ -191,29 +191,46 @@
   toggle.addEventListener('click', () => {
     enabled = !enabled; lastInteraction = performance.now(); sync(); save();
   });
+  const inputTime = event => Number.isFinite(event.timeStamp) ? event.timeStamp : performance.now();
+  function trackPointer(event) {
+    // Touch updates may be batched. Measure the finger, not the constrained pet,
+    // so reaching an edge does not erase the speed of an outward flick.
+    for (const point of [...(event.getCoalescedEvents?.() || []), event]) {
+      if (!Number.isFinite(point.clientX) || !Number.isFinite(point.clientY)) continue;
+      const t = inputTime(point), last = pointer.samples.at(-1);
+      if (last && t < last.t) continue;
+      body.x = point.clientX - pointer.dx; body.y = point.clientY - pointer.dy;
+      P.constrain(body, bounds);
+      pointer.moved ||= Math.hypot(point.clientX - pointer.startX, point.clientY - pointer.startY) > 5;
+      // A stationary lift must not turn an earlier drag into a fresh throw.
+      if (!last || Math.hypot(point.clientX - last.x, point.clientY - last.y) > 0.5) {
+        const sample = { x: point.clientX, y: point.clientY, t };
+        if (last?.t === t) pointer.samples[pointer.samples.length - 1] = sample;
+        else pointer.samples.push(sample);
+        pointer.samples = pointer.samples.filter(p => t - p.t <= 120);
+      }
+    }
+  }
   pet.addEventListener('pointerdown', event => {
     if (!active || pointer || event.button !== 0 || event.isPrimary === false) return;
     event.preventDefault(); lastInteraction = performance.now(); P.relax(body);
     pet.dataset.pointer = 'true';
     pointer = { id: event.pointerId, dx: event.clientX - body.x, dy: event.clientY - body.y,
-      startX: event.clientX, startY: event.clientY, moved: false, samples: [{ x: body.x, y: body.y, t: lastInteraction }] };
+      startX: event.clientX, startY: event.clientY, moved: false,
+      samples: [{ x: event.clientX, y: event.clientY, t: inputTime(event) }] };
     pet.setPointerCapture(event.pointerId); pet.dataset.held = 'true';
     pet.focus({ preventScroll: true }); render(lastInteraction);
   });
   pet.addEventListener('pointermove', event => {
     if (pointer?.id !== event.pointerId) return;
-    const now = performance.now();
-    body.x = event.clientX - pointer.dx; body.y = event.clientY - pointer.dy;
-    P.constrain(body, bounds);
-    pointer.moved ||= Math.hypot(event.clientX - pointer.startX, event.clientY - pointer.startY) > 5;
-    pointer.samples.push({ x: body.x, y: body.y, t: now });
-    pointer.samples = pointer.samples.filter(p => now - p.t < 120);
-    lastInteraction = now; render(now);
-  });
+    event.preventDefault(); trackPointer(event);
+    lastInteraction = performance.now(); render(lastInteraction);
+  }, { passive: false });
   pet.addEventListener('pointerup', event => {
     if (pointer?.id !== event.pointerId) return;
+    trackPointer(event);
     const now = performance.now(), moved = pointer.moved;
-    const velocity = P.releaseVelocity(pointer.samples, now);
+    const velocity = moved ? P.releaseVelocity(pointer.samples, inputTime(event)) : { vx: 0, vy: 0 };
     cancelDrag();
     if (moved) suppressClickUntil = now + 400;
     if (!reduced) {

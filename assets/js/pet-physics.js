@@ -49,7 +49,7 @@
     if (recent.length < 2 || now - recent.at(-1).t > 65) return { vx: 0, vy: 0 };
     const first = recent[0], last = recent.at(-1);
     const elapsed = (last.t - first.t) / 1000;
-    if (elapsed < 0.012) return { vx: 0, vy: 0 };
+    if (elapsed <= 0) return { vx: 0, vy: 0 };
     return { vx: (last.x - first.x) / elapsed, vy: (last.y - first.y) / elapsed };
   }
 

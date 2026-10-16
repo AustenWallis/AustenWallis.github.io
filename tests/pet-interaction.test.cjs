@@ -4,7 +4,7 @@ const fs = require('node:fs');
 const vm = require('node:vm');
 const P = require('../assets/js/pet-physics.js');
 
-function harness({ reduced = false, saved = null, storageBlocked = false } = {}) {
+function harness({ reduced = false, saved = null, storageBlocked = false, width = 1200, height = 800 } = {}) {
   const frames = new Map(); let serial = 0, now = 1000, stored = saved, mutation;
   function node() {
     return { style: {}, dataset: {}, attributes: {}, listeners: {}, hidden: true, captured: null,
@@ -12,7 +12,7 @@ function harness({ reduced = false, saved = null, storageBlocked = false } = {})
       setAttribute(key, value) { this.attributes[key] = value; },
       setPointerCapture(id) { this.captured = id; }, hasPointerCapture(id) { return this.captured === id; },
       releasePointerCapture() { this.captured = null; }, focus() { this.focused = true; },
-      fire(type, data = {}) { this.listeners[type]?.({ preventDefault() {}, button: 0, isPrimary: true, pointerId: 1, ...data }); }
+      fire(type, data = {}) { this.listeners[type]?.({ preventDefault() {}, button: 0, isPrimary: true, pointerId: 1, timeStamp: now, ...data }); }
     };
   }
   const toggle = node(), pet = node(), layer = node(), sprite = node(), state = node();
@@ -28,13 +28,13 @@ function harness({ reduced = false, saved = null, storageBlocked = false } = {})
   layer.querySelector = s => ({ '.bp-pet': pet, '.bp-pet-body': sprite, canvas })[s];
   toggle.querySelector = () => state;
   const root = { querySelector: s => ({ '[data-pet-toggle]': toggle, '.bp-pet-layer': layer,
-    '.bp-side': { getBoundingClientRect: () => ({ right: 220 }) } })[s] };
+    '.bp-side': { getBoundingClientRect: () => ({ right: width <= 640 ? 80 : 220 }) } })[s] };
   const docEvents = {}, winEvents = {};
-  const doc = { hidden: false, documentElement: { clientWidth: 1200 }, getElementById: () => root,
+  const doc = { hidden: false, documentElement: { clientWidth: width }, getElementById: () => root,
     body: { gallery: false, classList: { contains: () => doc.body.gallery } },
     addEventListener: (key, fn) => docEvents[key] = fn };
   const media = { matches: reduced, addEventListener: (_, fn) => media.change = fn };
-  const win = { AWPetPhysics: P, innerWidth: 1200, innerHeight: 800, devicePixelRatio: 2,
+  const win = { AWPetPhysics: P, innerWidth: width, innerHeight: height, devicePixelRatio: 2,
     matchMedia: () => media, addEventListener: (key, fn) => winEvents[key] = fn };
   const sandbox = { document: doc, window: win, performance: { now: () => now },
     localStorage: { getItem() { if (storageBlocked) throw Error('blocked'); return stored; },
@@ -80,6 +80,73 @@ test('pointer dragging, slow placement, throwing and cancellation remain distinc
   assert.equal(b.flying, false); assert.equal(h.api.get().pointer, null); assert.equal(h.pet.captured, null);
 });
 
+test('a short touch flick includes the final finger position on release', () => {
+  const h = harness({ width: 390, height: 844 }), b = h.api.body;
+  const x = b.x, y = b.y;
+  h.pet.fire('pointerdown', { pointerType: 'touch', clientX: x, clientY: y });
+  h.advance(50);
+  h.pet.fire('pointerup', { pointerType: 'touch', clientX: x - 65, clientY: y - 60 });
+  assert.equal(b.flying, true);
+  assert.ok(b.vx < -500 && b.vy < -500);
+  assert.equal(h.pet.captured, null);
+  const before = b.y;
+  h.advance(100);
+  assert.ok(b.y < before && h.api.get().particles > 0);
+});
+
+test('batched touch movement uses input timestamps rather than callback timing', () => {
+  const h = harness({ width: 390, height: 844 }), b = h.api.body;
+  const x = b.x, y = b.y;
+  h.pet.fire('pointerdown', { pointerType: 'touch', clientX: x, clientY: y, timeStamp: 1000 });
+  h.advance(160);
+  // A busy frame can receive a whole gesture together, with older hardware samples.
+  h.pet.fire('pointermove', { pointerType: 'touch', clientX: x - 65, clientY: y - 40, timeStamp: 1122,
+    getCoalescedEvents: () => [
+      { clientX: x - 20, clientY: y - 10, timeStamp: 1090 },
+      { clientX: x - 40, clientY: y - 25, timeStamp: 1106 },
+      { clientX: x - 65, clientY: y - 40, timeStamp: 1122 }
+    ] });
+  h.pet.fire('pointerup', { pointerType: 'touch', clientX: x - 85, clientY: y - 55, timeStamp: 1138 });
+  assert.equal(b.flying, true);
+  assert.ok(b.vx < -1000 && b.vy < -600);
+});
+
+test('a finger moving past the pet boundary still throws and rebounds on a narrow screen', () => {
+  const h = harness({ width: 320, height: 700 }), b = h.api.body, y = b.y;
+  h.pet.fire('pointerdown', { pointerType: 'touch', clientX: b.x, clientY: y });
+  for (const x of [280, 302, 318]) {
+    h.advance(50);
+    h.pet.fire('pointermove', { pointerType: 'touch', clientX: x, clientY: y });
+  }
+  h.advance(16);
+  h.pet.fire('pointerup', { pointerType: 'touch', clientX: 320, clientY: y });
+  assert.equal(b.flying, true);
+  assert.ok(b.vx > 200);
+  assert.ok(b.x <= 320 - 37.968);
+  h.advance(50);
+  assert.ok(b.vx < 0, 'The outgoing throw rebounds from the edge');
+});
+
+test('touch placement, taps and interrupted gestures do not cause accidental throws', () => {
+  const h = harness({ width: 390, height: 844 }), b = h.api.body;
+  const x = b.x, y = b.y;
+  h.pet.fire('pointerdown', { pointerType: 'touch', clientX: x, clientY: y });
+  h.advance(40);
+  h.pet.fire('pointermove', { pointerType: 'touch', clientX: x - 40, clientY: y });
+  h.advance(84);
+  h.pet.fire('pointerup', { pointerType: 'touch', clientX: x - 40, clientY: y });
+  assert.equal(b.flying, false, 'Holding still before release places the pet');
+  h.pet.fire('pointerdown', { pointerType: 'touch', clientX: b.x, clientY: b.y });
+  h.pet.fire('pointerup', { pointerType: 'touch', clientX: b.x + 1, clientY: b.y, timeStamp: 1135 });
+  assert.equal(b.flying, false, 'Minor tap jitter is not a throw');
+  h.pet.fire('pointerdown', { pointerType: 'touch', clientX: b.x, clientY: b.y });
+  h.advance(40);
+  h.pet.fire('pointermove', { pointerType: 'touch', clientX: b.x - 40, clientY: b.y - 30 });
+  h.pet.fire('pointercancel', { pointerType: 'touch' });
+  assert.equal(b.flying, false);
+  assert.equal(h.pet.captured, null);
+});
+
 test('hidden tabs and photo dialogs suspend work and resume without a time jump', () => {
   const h = harness(); h.pet.fire('keydown', { key: 'ArrowUp', shiftKey: true }); h.advance(100);
   h.doc.hidden = true; h.docEvents.visibilitychange();
@@ -95,6 +162,12 @@ test('reduced motion retains direct keyboard and drag control without momentum o
   const h = harness({ reduced: true, storageBlocked: true }), x = h.api.body.x;
   h.pet.fire('keydown', { key: 'ArrowLeft', shiftKey: true });
   assert.equal(h.api.body.x, x - 24); assert.equal(h.api.body.flying, false); assert.equal(h.frames.size, 0);
+  const y = h.api.body.y;
+  h.pet.fire('pointerdown', { pointerType: 'touch', clientX: h.api.body.x, clientY: y });
+  h.advance(50);
+  h.pet.fire('pointerup', { pointerType: 'touch', clientX: h.api.body.x - 60, clientY: y - 60 });
+  assert.equal(h.api.body.y, y - 60);
+  assert.equal(h.api.body.flying, false); assert.equal(h.frames.size, 0);
   h.pet.fire('click'); assert.equal(h.api.get().particles, 0);
   h.media.change({ matches: false }); assert.equal(h.frames.size, 1);
   h.pet.fire('keydown', { key: 'ArrowUp', shiftKey: true }); h.advance(100);

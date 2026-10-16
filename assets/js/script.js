@@ -84,15 +84,45 @@
   // Photographs remain normal links without JavaScript or dialog support.
   const galleryLinks = [...root.querySelectorAll('[data-gallery-open]')];
   const gallery = root.querySelector('.bp-lightbox');
-  let photoIndex = 0, photoTrigger = null;
-  function showPhoto(index) {
+  let photoIndex = 0, photoTrigger = null, photoRequest = 0, photoLoader = null;
+  function cancelPhotoLoad() {
+    photoRequest++;
+    photoLoader?.removeAttribute('src');
+    photoLoader = null;
+  }
+  async function showPhoto(index) {
+    cancelPhotoLoad();
+    const request = photoRequest;
     photoIndex = (index + galleryLinks.length) % galleryLinks.length;
-    const figure = galleryLinks[photoIndex].closest('figure'), original = figure.querySelector('img');
+    const link = galleryLinks[photoIndex], figure = link.closest('figure'), original = figure.querySelector('img');
     const image = gallery.querySelector('.bp-lightbox-image');
     image.src = original.currentSrc || original.src; image.alt = original.alt;
+    image.style.setProperty('--bp-photo-ratio', Number(original.getAttribute('width')) / Number(original.getAttribute('height')));
+    image.dataset.resolution = 'preview';
+    image.setAttribute('aria-busy', 'true');
     gallery.querySelector('#gallery-title').textContent = figure.querySelector('h3').textContent;
     gallery.querySelector('.bp-gallery-caption').textContent = figure.querySelector('figcaption p').textContent;
     gallery.querySelector('.bp-gallery-count').textContent = `${String(photoIndex + 1).padStart(2, '0')} / ${String(galleryLinks.length).padStart(2, '0')}`;
+
+    // Keep the cached preview visible until the selected full-size image has
+    // decoded. A stale request must never replace a newer photo or reopen it.
+    const loader = new Image();
+    photoLoader = loader;
+    loader.decoding = 'async';
+    loader.src = link.href;
+    try {
+      await loader.decode();
+      if (request !== photoRequest) return;
+      image.src = loader.src;
+      image.dataset.resolution = 'full';
+    } catch (_) {
+      // The preview remains usable if a full-size image fails to arrive.
+    } finally {
+      if (request === photoRequest) {
+        image.setAttribute('aria-busy', 'false');
+        photoLoader = null;
+      }
+    }
   }
   galleryLinks.forEach((link, index) => link.addEventListener('click', event => {
     if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || event.button !== 0 || !gallery.showModal) return;
@@ -109,7 +139,11 @@
     const box = gallery.getBoundingClientRect();
     if (event.target === gallery && (event.clientX < box.left || event.clientX > box.right || event.clientY < box.top || event.clientY > box.bottom)) gallery.close();
   });
-  gallery.addEventListener('close', () => { document.body.classList.remove('bp-gallery-open'); photoTrigger?.focus({ preventScroll: true }); });
+  gallery.addEventListener('close', () => {
+    cancelPhotoLoad();
+    gallery.querySelector('.bp-lightbox-image').setAttribute('aria-busy', 'false');
+    document.body.classList.remove('bp-gallery-open'); photoTrigger?.focus({ preventScroll: true });
+  });
 
   const ORCID_ID = '0000-0003-0770-9015';
   const publicationTypes = new Set(['journal-article', 'preprint', 'conference-paper', 'conference-abstract', 'conference-poster', 'book', 'book-chapter', 'edited-book', 'report', 'review', 'working-paper']);

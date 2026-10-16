@@ -60,8 +60,8 @@
   <link rel="icon" href="./assets/images/logo.ico?v=joined-white-1" type="image/x-icon" sizes="16x16 32x32 48x48 64x64 128x128 256x256">
   <link rel="icon" href="./assets/images/favicon.svg?v=joined-white-1" type="image/svg+xml" sizes="any">
   <link rel="apple-touch-icon" href="./assets/images/apple-touch-icon.png?v=joined-white-1" sizes="180x180">
-  <link rel="stylesheet" href="./assets/css/style.css?v=about-polish-6">
-  <link rel="stylesheet" href="./assets/css/pet.css?v=star-pet-1">
+  <link rel="stylesheet" href="./assets/css/style.css?v=photo-previews-1">
+  <link rel="stylesheet" href="./assets/css/pet.css?v=touch-fling-1">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
@@ -76,7 +76,7 @@
       <aside class="bp-side" aria-label="Profile and navigation">
         <div class="bp-side-content">
           <p class="bp-side-name"><span class="bp-full-name">AUSTEN G. W.</span><span class="bp-mobile-name">A. G. W.</span><span>WALLIS</span></p>
-          <div class="bp-portrait"><div class="bp-portrait-crop"><img class="bp-portrait-photo" src="./assets/images/portrait.jpg" alt="Portrait of Austen Wallis" width="640" height="960" fetchpriority="high"></div></div>
+          <div class="bp-portrait"><div class="bp-portrait-crop"><img class="bp-portrait-photo" src="./assets/images/portrait-400.webp" srcset="./assets/images/portrait-160.webp 160w, ./assets/images/portrait-400.webp 400w" sizes="(max-width: 640px) 64px, 176px" decoding="async" alt="Portrait of Austen Wallis" width="640" height="960" fetchpriority="high"></div></div>
           <nav class="bp-nav" aria-label="Primary navigation">
             <a href="#about" data-page="about" aria-current="page"><svg class="bp-icon " aria-hidden="true" viewBox="0 0 24 24"><use href="./assets/icons/lucide.svg#user-round"></use></svg><span class="bp-nav-label">About</span><span class="bp-number" aria-hidden="true">01</span></a>
             <a href="#publications" data-page="publications"><svg class="bp-icon " aria-hidden="true" viewBox="0 0 24 24"><use href="./assets/icons/lucide.svg#book-open"></use></svg><span class="bp-nav-label">Publications</span><span class="bp-number" aria-hidden="true">02</span></a>
@@ -100,10 +100,6 @@
         <section class="bp-panel" data-panel="about" id="about" aria-labelledby="headline">
           <div class="bp-hero">
             <h1 class="bp-name" id="headline"><span>Computational<br>Astrophysicist</span><span class="bp-headline-detail">Building AI-Powered Toolkits <svg class="bp-icon " aria-hidden="true" viewBox="0 0 24 24"><use href="./assets/icons/lucide.svg#telescope"></use></svg></span></h1>
-            <a class="bp-affiliation" href="https://www.ast.cam.ac.uk/people/austen.wallis" target="_blank" rel="noopener noreferrer">
-              <img src="./assets/images/organisations/cambridge.svg" alt="University of Cambridge" width="211" height="44">
-              <span><span class="bp-affiliation-role">Research Assistant <svg class="bp-icon" aria-hidden="true" viewBox="0 0 24 24"><use href="./assets/icons/lucide.svg#arrow-up-right"></use></svg></span><span class="bp-affiliation-institute">Institute of Astronomy</span></span>
-            </a>
             <canvas class="bp-canvas" role="img" aria-label="An animated schematic of a rotating star and orbiting exoplanet. Illustrative, not to scale.">A rotating star and an orbiting exoplanet.</canvas>
             <a class="bp-hero-link" href="#publications" data-page="publications"><span><span class="bp-eyebrow">Explore my work</span><span class="bp-hero-link-label">Publications <span class="bp-count-badge" data-paper-count>6</span></span></span><svg class="bp-icon" aria-hidden="true" viewBox="0 0 24 24"><use href="./assets/icons/lucide.svg#arrow-up-right"></use></svg></a>
           </div>
@@ -122,10 +118,13 @@
             </details>
             <span class="bp-status bp-sr-only" aria-live="polite">SYSTEM / IN MOTION</span>
           </div>
+          <a class="bp-affiliation" href="https://www.ast.cam.ac.uk/people/austen.wallis" target="_blank" rel="noopener noreferrer">
+            <img src="./assets/images/organisations/cambridge.svg" alt="University of Cambridge" width="211" height="44">
+            <span><span class="bp-affiliation-role">Research Assistant <svg class="bp-icon" aria-hidden="true" viewBox="0 0 24 24"><use href="./assets/icons/lucide.svg#arrow-up-right"></use></svg></span><span class="bp-affiliation-institute">Institute of Astronomy</span></span>
+          </a>
           <a class="bp-hero-link bp-mobile-work-link" href="#publications" data-page="publications"><span><span class="bp-eyebrow">Explore my work</span><span class="bp-hero-link-label">Publications <span class="bp-count-badge" data-paper-count>6</span></span></span><svg class="bp-icon" aria-hidden="true" viewBox="0 0 24 24"><use href="./assets/icons/lucide.svg#arrow-up-right"></use></svg></a>
           <section class="bp-about-copy" aria-label="About Austen">
             <ul class="bp-role-titles" aria-label="Professional disciplines"><li>Data Scientist</li><li>Machine Learning Engineer</li><li>AI Researcher</li></ul>
-            <p class="bp-current-role">I’m a <a href="https://www.ast.cam.ac.uk/people/austen.wallis" target="_blank" rel="noopener noreferrer">Research Assistant <svg class="bp-icon" aria-hidden="true" viewBox="0 0 24 24"><use href="./assets/icons/lucide.svg#arrow-up-right"></use></svg></a> at the University of Cambridge’s Institute of Astronomy.</p>
             <div class="bp-research-notes">
               <p>My research turns astronomical spectra into constraints on the physics of complex astrophysical systems. At Cambridge, I work with Nikku Madhusudhan’s Hycean group to disentangle planetary signatures from the changing spectra of their host stars, bringing together stellar physics, machine learning and Bayesian inference for JWST observations.</p>
               <p>Previously, I developed <a href="https://github.com/AustenWallis/Speculate" target="_blank" rel="noopener noreferrer">SPECULATE</a> during my doctoral research at Southampton: an open-source framework for emulating accretion-disc spectra and probing the physics of their winds. My work has also taken me beyond astronomy, into numerical weather prediction at IBM Research and fusion-plasma diagnostics at UKAEA.</p>
@@ -155,7 +154,7 @@
           <h2 id="places-title" class="bp-section-title">Places</h2>
           <p class="bp-section-intro">From observatory nights to conference stages.</p>
           <div class="bp-places-grid"><figure class="bp-place">
-            <a class="bp-photo-open" href="./assets/images/places/web/southampton.jpg" aria-label="Enlarge photo: Southampton, UK" data-gallery-open><img loading="lazy" decoding="async" src="./assets/images/places/web/southampton.jpg" alt="Group photo in Southampton" width="1400" height="734"><span class="bp-photo-expand" aria-hidden="true"><svg class="bp-icon " aria-hidden="true" viewBox="0 0 24 24"><use href="./assets/icons/lucide.svg#maximize-2"></use></svg></span></a>
+            <a class="bp-photo-open" href="./assets/images/places/web/southampton.jpg" aria-label="Enlarge photo: Southampton, UK" data-gallery-open><img loading="lazy" decoding="async" src="./assets/images/places/thumbnails/southampton-480.webp" srcset="./assets/images/places/thumbnails/southampton-480.webp 480w, ./assets/images/places/thumbnails/southampton-800.webp 800w" sizes="(min-width: 1300px) 360px, (min-width: 851px) 480px, (min-width: 641px) calc(100vw - 254px), calc(100vw - 122px)" alt="Group photo in Southampton" width="1400" height="734"><span class="bp-photo-expand" aria-hidden="true"><svg class="bp-icon " aria-hidden="true" viewBox="0 0 24 24"><use href="./assets/icons/lucide.svg#maximize-2"></use></svg></span></a>
             <figcaption>
               <span class="bp-eyebrow">Doctoral research</span>
               <h3>Southampton, UK</h3>
@@ -164,7 +163,7 @@
           </figure>
 
           <figure class="bp-place">
-            <a class="bp-photo-open" href="./assets/images/places/web/tenerife.jpg" aria-label="Enlarge photo: Tenerife, Spain" data-gallery-open><img loading="lazy" decoding="async" src="./assets/images/places/web/tenerife.jpg" alt="Austen Wallis in an observatory in Tenerife" width="1400" height="1050"><span class="bp-photo-expand" aria-hidden="true"><svg class="bp-icon " aria-hidden="true" viewBox="0 0 24 24"><use href="./assets/icons/lucide.svg#maximize-2"></use></svg></span></a>
+            <a class="bp-photo-open" href="./assets/images/places/web/tenerife.jpg" aria-label="Enlarge photo: Tenerife, Spain" data-gallery-open><img loading="lazy" decoding="async" src="./assets/images/places/thumbnails/tenerife-480.webp" srcset="./assets/images/places/thumbnails/tenerife-480.webp 480w, ./assets/images/places/thumbnails/tenerife-800.webp 800w" sizes="(min-width: 1300px) 360px, (min-width: 851px) 480px, (min-width: 641px) calc(100vw - 254px), calc(100vw - 122px)" alt="Austen Wallis in an observatory in Tenerife" width="1400" height="1050"><span class="bp-photo-expand" aria-hidden="true"><svg class="bp-icon " aria-hidden="true" viewBox="0 0 24 24"><use href="./assets/icons/lucide.svg#maximize-2"></use></svg></span></a>
             <figcaption>
               <span class="bp-eyebrow">Observatory work</span>
               <h3>Tenerife, Spain</h3>
@@ -173,7 +172,7 @@
           </figure>
 
           <figure class="bp-place">
-            <a class="bp-photo-open" href="./assets/images/places/web/culham.jpg" aria-label="Enlarge photo: Culham, UK" data-gallery-open><img loading="lazy" decoding="async" src="./assets/images/places/web/culham.jpg" alt="Austen Wallis at Culham" width="1400" height="787"><span class="bp-photo-expand" aria-hidden="true"><svg class="bp-icon " aria-hidden="true" viewBox="0 0 24 24"><use href="./assets/icons/lucide.svg#maximize-2"></use></svg></span></a>
+            <a class="bp-photo-open" href="./assets/images/places/web/culham.jpg" aria-label="Enlarge photo: Culham, UK" data-gallery-open><img loading="lazy" decoding="async" src="./assets/images/places/thumbnails/culham-480.webp" srcset="./assets/images/places/thumbnails/culham-480.webp 480w, ./assets/images/places/thumbnails/culham-800.webp 800w" sizes="(min-width: 1300px) 360px, (min-width: 851px) 480px, (min-width: 641px) calc(100vw - 254px), calc(100vw - 122px)" alt="Austen Wallis at Culham" width="1400" height="787"><span class="bp-photo-expand" aria-hidden="true"><svg class="bp-icon " aria-hidden="true" viewBox="0 0 24 24"><use href="./assets/icons/lucide.svg#maximize-2"></use></svg></span></a>
             <figcaption>
               <span class="bp-eyebrow">UKAEA placement</span>
               <h3>Culham, UK</h3>
@@ -182,7 +181,7 @@
           </figure>
 
           <figure class="bp-place">
-            <a class="bp-photo-open" href="./assets/images/places/web/daresbury.jpg" aria-label="Enlarge photo: Daresbury, UK" data-gallery-open><img loading="lazy" decoding="async" src="./assets/images/places/web/daresbury.jpg" alt="Austen Wallis at the Hartree Centre in Daresbury" width="1400" height="788"><span class="bp-photo-expand" aria-hidden="true"><svg class="bp-icon " aria-hidden="true" viewBox="0 0 24 24"><use href="./assets/icons/lucide.svg#maximize-2"></use></svg></span></a>
+            <a class="bp-photo-open" href="./assets/images/places/web/daresbury.jpg" aria-label="Enlarge photo: Daresbury, UK" data-gallery-open><img loading="lazy" decoding="async" src="./assets/images/places/thumbnails/daresbury-480.webp" srcset="./assets/images/places/thumbnails/daresbury-480.webp 480w, ./assets/images/places/thumbnails/daresbury-800.webp 800w" sizes="(min-width: 1300px) 360px, (min-width: 851px) 480px, (min-width: 641px) calc(100vw - 254px), calc(100vw - 122px)" alt="Austen Wallis at the Hartree Centre in Daresbury" width="1400" height="788"><span class="bp-photo-expand" aria-hidden="true"><svg class="bp-icon " aria-hidden="true" viewBox="0 0 24 24"><use href="./assets/icons/lucide.svg#maximize-2"></use></svg></span></a>
             <figcaption>
               <span class="bp-eyebrow">IBM Research placement</span>
               <h3>Daresbury, UK</h3>
@@ -191,7 +190,7 @@
           </figure>
 
           <figure class="bp-place">
-            <a class="bp-photo-open" href="./assets/images/places/web/dublin.jpg" aria-label="Enlarge photo: Trinity College Dublin" data-gallery-open><img loading="lazy" decoding="async" src="./assets/images/places/web/dublin.jpg" alt="Austen Wallis speaking at Trinity College Dublin" width="1400" height="931"><span class="bp-photo-expand" aria-hidden="true"><svg class="bp-icon " aria-hidden="true" viewBox="0 0 24 24"><use href="./assets/icons/lucide.svg#maximize-2"></use></svg></span></a>
+            <a class="bp-photo-open" href="./assets/images/places/web/dublin.jpg" aria-label="Enlarge photo: Trinity College Dublin" data-gallery-open><img loading="lazy" decoding="async" src="./assets/images/places/thumbnails/dublin-480.webp" srcset="./assets/images/places/thumbnails/dublin-480.webp 480w, ./assets/images/places/thumbnails/dublin-800.webp 800w" sizes="(min-width: 1300px) 360px, (min-width: 851px) 480px, (min-width: 641px) calc(100vw - 254px), calc(100vw - 122px)" alt="Austen Wallis speaking at Trinity College Dublin" width="1400" height="931"><span class="bp-photo-expand" aria-hidden="true"><svg class="bp-icon " aria-hidden="true" viewBox="0 0 24 24"><use href="./assets/icons/lucide.svg#maximize-2"></use></svg></span></a>
             <figcaption>
               <span class="bp-eyebrow">Talk</span>
               <h3>Trinity College Dublin</h3>
@@ -200,7 +199,7 @@
           </figure>
 
           <figure class="bp-place">
-            <a class="bp-photo-open" href="./assets/images/places/web/winchester.jpg" aria-label="Enlarge photo: Winchester, UK" data-gallery-open><img loading="lazy" decoding="async" src="./assets/images/places/web/winchester.jpg" alt="Architectural rendering of a modern house in Winchester" width="1400" height="875"><span class="bp-photo-expand" aria-hidden="true"><svg class="bp-icon " aria-hidden="true" viewBox="0 0 24 24"><use href="./assets/icons/lucide.svg#maximize-2"></use></svg></span></a>
+            <a class="bp-photo-open" href="./assets/images/places/web/winchester.jpg" aria-label="Enlarge photo: Winchester, UK" data-gallery-open><img loading="lazy" decoding="async" src="./assets/images/places/thumbnails/winchester-480.webp" srcset="./assets/images/places/thumbnails/winchester-480.webp 480w, ./assets/images/places/thumbnails/winchester-800.webp 800w" sizes="(min-width: 1300px) 360px, (min-width: 851px) 480px, (min-width: 641px) calc(100vw - 254px), calc(100vw - 122px)" alt="Architectural rendering of a modern house in Winchester" width="1400" height="875"><span class="bp-photo-expand" aria-hidden="true"><svg class="bp-icon " aria-hidden="true" viewBox="0 0 24 24"><use href="./assets/icons/lucide.svg#maximize-2"></use></svg></span></a>
             <figcaption>
               <span class="bp-eyebrow">Local work</span>
               <h3>Winchester, UK</h3>
@@ -209,7 +208,7 @@
           </figure>
 
           <figure class="bp-place">
-            <a class="bp-photo-open" href="./assets/images/places/web/pydata-southampton.jpg" aria-label="Enlarge photo: PyData Southampton" data-gallery-open><img loading="lazy" decoding="async" src="./assets/images/places/web/pydata-southampton.jpg" alt="Austen Wallis speaking at PyData Southampton" width="1400" height="1050"><span class="bp-photo-expand" aria-hidden="true"><svg class="bp-icon " aria-hidden="true" viewBox="0 0 24 24"><use href="./assets/icons/lucide.svg#maximize-2"></use></svg></span></a>
+            <a class="bp-photo-open" href="./assets/images/places/web/pydata-southampton.jpg" aria-label="Enlarge photo: PyData Southampton" data-gallery-open><img loading="lazy" decoding="async" src="./assets/images/places/thumbnails/pydata-southampton-480.webp" srcset="./assets/images/places/thumbnails/pydata-southampton-480.webp 480w, ./assets/images/places/thumbnails/pydata-southampton-800.webp 800w" sizes="(min-width: 1300px) 360px, (min-width: 851px) 480px, (min-width: 641px) calc(100vw - 254px), calc(100vw - 122px)" alt="Austen Wallis speaking at PyData Southampton" width="1400" height="1050"><span class="bp-photo-expand" aria-hidden="true"><svg class="bp-icon " aria-hidden="true" viewBox="0 0 24 24"><use href="./assets/icons/lucide.svg#maximize-2"></use></svg></span></a>
             <figcaption>
               <span class="bp-eyebrow">Community talk</span>
               <h3>PyData Southampton</h3>
@@ -218,7 +217,7 @@
           </figure>
 
           <figure class="bp-place">
-            <a class="bp-photo-open" href="./assets/images/places/web/pydata-london.jpg" aria-label="Enlarge photo: PyData London 2024" data-gallery-open><img loading="lazy" decoding="async" src="./assets/images/places/web/pydata-london.jpg" alt="Audience view during Austen Wallis's PyData London 2024 lightning talk" width="1400" height="1054"><span class="bp-photo-expand" aria-hidden="true"><svg class="bp-icon " aria-hidden="true" viewBox="0 0 24 24"><use href="./assets/icons/lucide.svg#maximize-2"></use></svg></span></a>
+            <a class="bp-photo-open" href="./assets/images/places/web/pydata-london.jpg" aria-label="Enlarge photo: PyData London 2024" data-gallery-open><img loading="lazy" decoding="async" src="./assets/images/places/thumbnails/pydata-london-480.webp" srcset="./assets/images/places/thumbnails/pydata-london-480.webp 480w, ./assets/images/places/thumbnails/pydata-london-800.webp 800w" sizes="(min-width: 1300px) 360px, (min-width: 851px) 480px, (min-width: 641px) calc(100vw - 254px), calc(100vw - 122px)" alt="Audience view during Austen Wallis's PyData London 2024 lightning talk" width="1400" height="1054"><span class="bp-photo-expand" aria-hidden="true"><svg class="bp-icon " aria-hidden="true" viewBox="0 0 24 24"><use href="./assets/icons/lucide.svg#maximize-2"></use></svg></span></a>
             <figcaption>
               <span class="bp-eyebrow">Lightning talk</span>
               <h3>PyData London 2024</h3>
@@ -227,7 +226,7 @@
           </figure>
 
           <figure class="bp-place">
-            <a class="bp-photo-open" href="./assets/images/places/web/gradnet-award.jpg" aria-label="Enlarge photo: GRADnet Award" data-gallery-open><img loading="lazy" decoding="async" src="./assets/images/places/web/gradnet-award.jpg" alt="Austen Wallis receiving an award at GRADnet 2024" width="1400" height="931"><span class="bp-photo-expand" aria-hidden="true"><svg class="bp-icon " aria-hidden="true" viewBox="0 0 24 24"><use href="./assets/icons/lucide.svg#maximize-2"></use></svg></span></a>
+            <a class="bp-photo-open" href="./assets/images/places/web/gradnet-award.jpg" aria-label="Enlarge photo: GRADnet Award" data-gallery-open><img loading="lazy" decoding="async" src="./assets/images/places/thumbnails/gradnet-award-480.webp" srcset="./assets/images/places/thumbnails/gradnet-award-480.webp 480w, ./assets/images/places/thumbnails/gradnet-award-800.webp 800w" sizes="(min-width: 1300px) 360px, (min-width: 851px) 480px, (min-width: 641px) calc(100vw - 254px), calc(100vw - 122px)" alt="Austen Wallis receiving an award at GRADnet 2024" width="1400" height="931"><span class="bp-photo-expand" aria-hidden="true"><svg class="bp-icon " aria-hidden="true" viewBox="0 0 24 24"><use href="./assets/icons/lucide.svg#maximize-2"></use></svg></span></a>
             <figcaption>
               <span class="bp-eyebrow">Award</span>
               <h3>GRADnet Award</h3>
@@ -236,7 +235,7 @@
           </figure>
 
           <figure class="bp-place">
-            <a class="bp-photo-open" href="./assets/images/places/web/gradnet.jpg" aria-label="Enlarge photo: GRADnet 2024" data-gallery-open><img loading="lazy" decoding="async" src="./assets/images/places/web/gradnet.jpg" alt="Group photo at GRADnet 2024" width="1400" height="985"><span class="bp-photo-expand" aria-hidden="true"><svg class="bp-icon " aria-hidden="true" viewBox="0 0 24 24"><use href="./assets/icons/lucide.svg#maximize-2"></use></svg></span></a>
+            <a class="bp-photo-open" href="./assets/images/places/web/gradnet.jpg" aria-label="Enlarge photo: GRADnet 2024" data-gallery-open><img loading="lazy" decoding="async" src="./assets/images/places/thumbnails/gradnet-480.webp" srcset="./assets/images/places/thumbnails/gradnet-480.webp 480w, ./assets/images/places/thumbnails/gradnet-800.webp 800w" sizes="(min-width: 1300px) 360px, (min-width: 851px) 480px, (min-width: 641px) calc(100vw - 254px), calc(100vw - 122px)" alt="Group photo at GRADnet 2024" width="1400" height="985"><span class="bp-photo-expand" aria-hidden="true"><svg class="bp-icon " aria-hidden="true" viewBox="0 0 24 24"><use href="./assets/icons/lucide.svg#maximize-2"></use></svg></span></a>
             <figcaption>
               <span class="bp-eyebrow">Network event</span>
               <h3>GRADnet 2024</h3>
@@ -245,7 +244,7 @@
           </figure>
 
           <figure class="bp-place">
-            <a class="bp-photo-open" href="./assets/images/places/web/stem-for-britain.jpg" aria-label="Enlarge photo: STEM for Britain 2026" data-gallery-open><img loading="lazy" decoding="async" src="./assets/images/places/web/stem-for-britain.jpg" alt="Austen Wallis at STEM for Britain 2026" width="933" height="1400"><span class="bp-photo-expand" aria-hidden="true"><svg class="bp-icon " aria-hidden="true" viewBox="0 0 24 24"><use href="./assets/icons/lucide.svg#maximize-2"></use></svg></span></a>
+            <a class="bp-photo-open" href="./assets/images/places/web/stem-for-britain.jpg" aria-label="Enlarge photo: STEM for Britain 2026" data-gallery-open><img loading="lazy" decoding="async" src="./assets/images/places/thumbnails/stem-for-britain-480.webp" srcset="./assets/images/places/thumbnails/stem-for-britain-480.webp 320w, ./assets/images/places/thumbnails/stem-for-britain-800.webp 533w" sizes="(min-width: 1300px) 360px, (min-width: 851px) 480px, (min-width: 641px) calc(100vw - 254px), calc(100vw - 122px)" alt="Austen Wallis at STEM for Britain 2026" width="933" height="1400"><span class="bp-photo-expand" aria-hidden="true"><svg class="bp-icon " aria-hidden="true" viewBox="0 0 24 24"><use href="./assets/icons/lucide.svg#maximize-2"></use></svg></span></a>
             <figcaption>
               <span class="bp-eyebrow">Showcase</span>
               <h3>STEM for Britain 2026</h3>
@@ -254,7 +253,7 @@
           </figure>
 
           <figure class="bp-place">
-            <a class="bp-photo-open" href="./assets/images/places/web/stag-prize.jpg" aria-label="Enlarge photo: STAG Research Prize" data-gallery-open><img loading="lazy" decoding="async" src="./assets/images/places/web/stag-prize.jpg" alt="Austen Wallis receiving the STAG Research Prize" width="1400" height="1397"><span class="bp-photo-expand" aria-hidden="true"><svg class="bp-icon " aria-hidden="true" viewBox="0 0 24 24"><use href="./assets/icons/lucide.svg#maximize-2"></use></svg></span></a>
+            <a class="bp-photo-open" href="./assets/images/places/web/stag-prize.jpg" aria-label="Enlarge photo: STAG Research Prize" data-gallery-open><img loading="lazy" decoding="async" src="./assets/images/places/thumbnails/stag-prize-480.webp" srcset="./assets/images/places/thumbnails/stag-prize-480.webp 480w, ./assets/images/places/thumbnails/stag-prize-800.webp 800w" sizes="(min-width: 1300px) 360px, (min-width: 851px) 480px, (min-width: 641px) calc(100vw - 254px), calc(100vw - 122px)" alt="Austen Wallis receiving the STAG Research Prize" width="1400" height="1397"><span class="bp-photo-expand" aria-hidden="true"><svg class="bp-icon " aria-hidden="true" viewBox="0 0 24 24"><use href="./assets/icons/lucide.svg#maximize-2"></use></svg></span></a>
             <figcaption>
               <span class="bp-eyebrow">Award</span>
               <h3>STAG Research Prize</h3>
@@ -263,7 +262,7 @@
           </figure>
 
           <figure class="bp-place">
-            <a class="bp-photo-open" href="./assets/images/places/web/three-minute-thesis.jpg?v=photo-fix-1" aria-label="Enlarge photo: FEPS 3MT Runner-Up" data-gallery-open><img loading="lazy" decoding="async" src="./assets/images/places/web/three-minute-thesis.jpg?v=photo-fix-1" alt="Austen Wallis receiving the FEPS 3 Minute Thesis runner-up prize" width="1400" height="1232"><span class="bp-photo-expand" aria-hidden="true"><svg class="bp-icon " aria-hidden="true" viewBox="0 0 24 24"><use href="./assets/icons/lucide.svg#maximize-2"></use></svg></span></a>
+            <a class="bp-photo-open" href="./assets/images/places/web/three-minute-thesis.jpg?v=photo-fix-1" aria-label="Enlarge photo: FEPS 3MT Runner-Up" data-gallery-open><img loading="lazy" decoding="async" src="./assets/images/places/thumbnails/three-minute-thesis-480.webp" srcset="./assets/images/places/thumbnails/three-minute-thesis-480.webp 480w, ./assets/images/places/thumbnails/three-minute-thesis-800.webp 800w" sizes="(min-width: 1300px) 360px, (min-width: 851px) 480px, (min-width: 641px) calc(100vw - 254px), calc(100vw - 122px)" alt="Austen Wallis receiving the FEPS 3 Minute Thesis runner-up prize" width="1400" height="1232"><span class="bp-photo-expand" aria-hidden="true"><svg class="bp-icon " aria-hidden="true" viewBox="0 0 24 24"><use href="./assets/icons/lucide.svg#maximize-2"></use></svg></span></a>
             <figcaption>
               <span class="bp-eyebrow">Award talk</span>
               <h3>FEPS 3MT Runner-Up</h3>
@@ -323,10 +322,10 @@
     </div>
   </div>
   <script type="application/json" data-work-data>{"count": 7, "updated": "2026-10-09", "works": [{"title": "Optical outburst evolution of the transient black hole X-ray binary Swift J1727.8−1613: disc response to jet ejections and late-outburst emergence of powerful disc winds", "type": "journal-article", "date": "2026-07-25", "meta": "Monthly Notices of the Royal Astronomical Society · 2026", "link": "https://doi.org/10.1093/mnras/stag1175"}, {"title": "Sirocco", "type": "software", "date": "2026-05-22", "meta": "Zenodo · 2026", "link": "https://doi.org/10.5281/zenodo.13969075"}, {"title": "Radiation-ionization hydrodynamic simulations of AGN line-driven winds lead to transient shielding and BAL/UFO signatures", "type": "journal-article", "date": "2026-04-24", "meta": "Monthly Notices of the Royal Astronomical Society · 2026", "link": "https://doi.org/10.1093/mnras/stag592"}, {"title": "The critical role of clumping in line-driven disc winds", "type": "journal-article", "date": "2025-12-22", "meta": "Monthly Notices of the Royal Astronomical Society · 2025", "link": "https://doi.org/10.1093/mnras/staf2183"}, {"title": "A diagnostic kit for optical emission lines shaped by accretion disc winds", "type": "journal-article", "date": "2025-09-16", "meta": "Monthly Notices of the Royal Astronomical Society · 2025", "link": "https://doi.org/10.1093/mnras/staf1450"}, {"title": "Monte Carlo radiation hydrodynamic simulations of line-driven disc winds: relaxing the isothermal approximation", "type": "journal-article", "date": "2025-07-21", "meta": "Monthly Notices of the Royal Astronomical Society · 2025", "link": "https://doi.org/10.1093/mnras/staf1101"}, {"title": "SIROCCO: a publicly available Monte Carlo ionization and radiative transfer code for astrophysical outflows", "type": "journal-article", "date": "2024-12-04", "meta": "Monthly Notices of the Royal Astronomical Society · 2024", "link": "https://doi.org/10.1093/mnras/stae2677"}]}</script>
-  <script src="./assets/js/script.js?v=stable-pages-1" defer></script>
+  <script src="./assets/js/script.js?v=photo-previews-1" defer></script>
   <script src="./assets/js/systems-physics.js?v=observatory-3" defer></script>
   <script src="./assets/js/systems.js?v=stable-pages-1" defer></script>
-  <script src="./assets/js/pet-physics.js?v=star-pet-1" defer></script>
-  <script src="./assets/js/pet.js?v=star-pet-1" defer></script>
+  <script src="./assets/js/pet-physics.js?v=touch-fling-1" defer></script>
+  <script src="./assets/js/pet.js?v=touch-fling-1" defer></script>
 </body>
 </html>
