@@ -1,59 +1,43 @@
-Austen Wallis
-Exoplanets, spectral modelling, scientific machine learning
+Austen G. W. Wallis
+Computational Astrophysicist Building AI-Powered Toolkits 🔭
 
-Sections
-- About
-- CV
-- Places
-- Contact
+Sections: About, Publications, Places, CV
 
 About
-I develop machine-learning tools and scientific software for complex physical systems. My work combines accelerated computing and simulation emulators to make models faster, with Bayesian inference and uncertainty quantification to connect them with data. I have applied these methods in astrophysics, fusion research, and weather modelling.
+Data Scientist / Machine Learning Engineer / AI Researcher
+I’m a Research Assistant at the University of Cambridge’s Institute of Astronomy.
+My research turns astronomical spectra into constraints on the physics of complex astrophysical systems. At Cambridge, I work with Nikku Madhusudhan’s Hycean group to disentangle planetary signatures from the changing spectra of their host stars, bringing together stellar physics, machine learning and Bayesian inference for JWST observations.
+Previously, I developed SPECULATE during my doctoral research at Southampton: an open-source framework for emulating accretion-disc spectra and probing the physics of their winds. My work has also taken me beyond astronomy, into numerical weather prediction at IBM Research and fusion-plasma diagnostics at UKAEA.
 
-Current research
-Research Assistant in Exoplanetary Remote Sensing and Data Science at the University of Cambridge. Working on M-dwarf spectra, stellar variability, and exoplanet-atmosphere inference with JWST data. Completing doctoral research at the University of Southampton.
-
-Methods
-- Accelerated computing and physical modelling
-- Machine-learning emulators
-- Bayesian inference and uncertainty quantification
-- Scientific software
-
-Highlights
-- 100k+ synthetic spectra released for rapid outflow analysis
-- Research outputs listed on ORCID
-- 2Mx surrogate acceleration in UKAEA research
-- 150+ students mentored in scientific Python and data analysis
+Publications
+The publication list and homepage count update from ORCID: 0000-0003-0770-9015.
+The publication count excludes software; the page also shows the total ORCID work count.
+A dated fallback list remains available if ORCID cannot be reached.
+Filter the full list by publication year; each row links to its publication record.
 
 CV
-Education
-- PhD candidate in Astrophysics, University of Southampton, Sept 2022 - Present
-- MPhys in Astrophysics with a Year of Research, University of Southampton, Sept 2017 - July 2021
-
-Research and industry
-- Research Assistant in Exoplanetary Remote Sensing and Data Science, University of Cambridge, Sept 2026 - Present
-- Postgraduate Researcher, University of Southampton, Sept 2022 - Present (doctoral research nearing submission)
-- AI Research Scientist, IBM Research, Daresbury, June 2025 - Sept 2025
-- Machine Learning Research Scientist, UKAEA, Culham, June 2024 - Sept 2024
-- Student Researcher, IAC and University of La Laguna, Tenerife, Jan 2019 - June 2019
-
-Selected publications
-- A diagnostic kit for optical emission lines shaped by accretion disc winds, MNRAS 2025
-- The critical role of clumping in line-driven disc winds, MNRAS 2025
-- Monte Carlo radiation hydrodynamic simulations of line-driven disc winds, MNRAS 2025
-- SIROCCO: a publicly available Monte Carlo ionization and radiative transfer code, MNRAS 2024
+Research Assistant in Exoplanetary Remote Sensing and Data Science, University of Cambridge, Sep 2026 - present.
+Postgraduate Researcher, University of Southampton, Sep 2022 - present.
+AI Research Scientist, IBM Research, Daresbury, Jun - Sep 2025.
+Machine Learning Research Scientist, UKAEA, Culham, Jun - Sep 2024.
+Student Researcher, IAC and University of La Laguna, Jan - Jun 2019.
+PhD candidate in Astrophysics, University of Southampton, Sep 2022 - present.
+MPhys in Astrophysics with a Year of Research, University of Southampton, Sep 2017 - Jul 2021, first class honours.
+Teaching: scientific Python, data analysis, astronomy design and observation, and Astrodome outreach.
+Selected awards: FEPS 3MT runner-up (2026), STAG Research Prize (2025), SEPnet Best PhD Poster (2024), DISCnet LIV.INNO ML Kaggle second place (2024).
+The CV is presented on the website, with a Download CV (PDF) link to Academic_CV.pdf.
 
 Places
-- Southampton, UK
-- Tenerife, Spain
-- Culham, UK
-- Daresbury, UK
-- Winchester, UK
-- FEPS 3MT Runner-Up, Accelerating Astronomical Discoveries with AI Emulators
+Southampton, Tenerife, Culham, Daresbury, Trinity College Dublin, Winchester, PyData Southampton, PyData London 2024, GRADnet Award, GRADnet 2024, STEM for Britain 2026, STAG Research Prize, FEPS 3MT runner-up.
+Select a photograph to open the full-image viewer with previous and next controls.
 
-Contact
-- Email: agww2@cam.ac.uk
-- Cambridge profile: ast.cam.ac.uk/people/austen.wallis
-- LinkedIn: linkedin.com/in/austenwallis
-- GitHub: github.com/AustenWallis
-- Hugging Face: huggingface.co/AustenWallis
+Contact and profiles
+Email: a.wallis@ast.cam.ac.uk
+Cambridge: https://www.ast.cam.ac.uk/people/austen.wallis
+ORCID: https://orcid.org/0000-0003-0770-9015
+Google Scholar: https://scholar.google.com/citations?user=xLjdznsAAAAJ&hl=en
+LinkedIn: https://www.linkedin.com/in/austenwallis/
+GitHub: https://github.com/AustenWallis
+Hugging Face: https://huggingface.co/AustenWallis
+
+An optional star pet can be dragged, thrown and clicked. Its on/off switch is at the bottom of the sidebar, alongside the contact footer; position and preference are saved locally. Keyboard controls and reduced-motion support are included.

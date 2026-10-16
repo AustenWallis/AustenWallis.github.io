@@ -1,241 +1,195 @@
 'use strict';
-
-const sidebar = document.querySelector('[data-sidebar]');
-const sidebarButton = document.querySelector('[data-sidebar-btn]');
-const navLinks = Array.from(document.querySelectorAll('[data-nav-link]'));
-const pages = Array.from(document.querySelectorAll('[data-page]'));
-const contactForm = document.querySelector('[data-contact-form]');
-const formButton = document.querySelector('[data-form-btn]');
-const orcidList = document.querySelector('[data-orcid-list]');
-const publicationCount = document.querySelector('[data-publication-count]');
-const flipCards = Array.from(document.querySelectorAll('[data-flip-card]'));
-const desktopQuery = window.matchMedia('(min-width: 1080px)');
-const ORCID_ID = '0000-0003-0770-9015';
-const ORCID_WORKS_URL = `https://pub.orcid.org/v3.0/${ORCID_ID}/works`;
-
-function setSidebarState(isExpanded) {
-  if (!sidebar || !sidebarButton) {
-    return;
+(() => {
+  const root = document.getElementById('aw-blueprint');
+  if (!root) return;
+  const panels = [...root.querySelectorAll('[data-panel]')];
+  const numbers = { about: '01', publications: '02', places: '03', cv: '04' };
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
+  let activePage = 'about', generation = 0, animation = null;
+  root.classList.add('bp-has-js');
+  function pageName(value) {
+    const name = String(value || '').replace(/^#/, '').toLowerCase();
+    if (name === 'papers') return 'publications';
+    return Object.hasOwn(numbers, name) ? name : 'about';
   }
-
-  sidebar.classList.toggle('active', isExpanded);
-  sidebarButton.setAttribute('aria-expanded', String(isExpanded));
-  sidebarButton.textContent = isExpanded ? 'Hide contacts' : 'Show contacts';
-}
-
-function normalisePageName(pageName) {
-  const availablePages = new Set(pages.map((page) => page.dataset.page));
-  return availablePages.has(pageName) ? pageName : 'about';
-}
-
-function activatePage(pageName, updateHash = true) {
-  const target = normalisePageName(pageName);
-
-  pages.forEach((page) => {
-    const isActive = page.dataset.page === target;
-    page.classList.toggle('active', isActive);
-    page.hidden = !isActive;
-  });
-
-  navLinks.forEach((link) => {
-    const isActive = link.dataset.target === target;
-    link.classList.toggle('active', isActive);
-
-    if (isActive) {
-      link.setAttribute('aria-current', 'page');
-    } else {
-      link.removeAttribute('aria-current');
-    }
-  });
-
-  if (updateHash) {
-    history.replaceState(null, '', `#${target}`);
-  }
-}
-
-function syncSidebarWithViewport() {
-  setSidebarState(desktopQuery.matches);
-}
-
-function getPublicationDate(summary) {
-  const publicationDate = summary['publication-date'] || {};
-  const year = publicationDate.year?.value || '';
-  const month = String(publicationDate.month?.value || '01').padStart(2, '0');
-  const day = String(publicationDate.day?.value || '01').padStart(2, '0');
-
-  return {
-    year,
-    sortKey: year ? `${year}-${month}-${day}` : '0000-01-01',
-  };
-}
-
-function getPublicationLink(summary) {
-  const externalIds = summary['external-ids']?.['external-id'] || [];
-  const doi = externalIds.find((item) => item['external-id-type'] === 'doi')?.['external-id-value'];
-  const externalUrl = externalIds.find((item) => item['external-id-url']?.value)?.['external-id-url']?.value;
-
-  if (doi) {
-    return `https://doi.org/${doi}`;
-  }
-
-  if (externalUrl) {
-    return externalUrl;
-  }
-
-  return `https://orcid.org/${ORCID_ID}`;
-}
-
-function selectGroupSummary(group) {
-  const summaries = group['work-summary'] || [];
-
-  return summaries.find((summary) => {
-    const externalIds = summary['external-ids']?.['external-id'] || [];
-    return externalIds.length > 0;
-  }) || summaries[0] || null;
-}
-
-function buildPublicationRecord(summary) {
-  const { year, sortKey } = getPublicationDate(summary);
-  const journal = summary['journal-title']?.value?.trim() || '';
-  const title = summary.title?.title?.value?.trim() || '';
-
-  return {
-    title,
-    meta: [journal, year].filter(Boolean).join(' · ') || 'Publication record',
-    sortKey,
-    link: getPublicationLink(summary),
-  };
-}
-
-function createPublicationCard(work) {
-  const link = document.createElement('a');
-  link.href = work.link;
-  link.target = '_blank';
-  link.rel = 'noopener noreferrer';
-
-  const title = document.createElement('strong');
-  title.textContent = work.title;
-
-  const meta = document.createElement('span');
-  meta.textContent = work.meta;
-
-  link.append(title, meta);
-  return link;
-}
-
-function createPublicationFallback() {
-  const message = document.createElement('p');
-  message.className = 'publication-status';
-  message.textContent = 'Recent work is unavailable right now. ';
-
-  const link = document.createElement('a');
-  link.className = 'text-link';
-  link.href = `https://orcid.org/${ORCID_ID}`;
-  link.target = '_blank';
-  link.rel = 'noopener noreferrer';
-  link.textContent = 'View ORCID directly.';
-
-  message.append(link);
-  return message;
-}
-
-async function loadOrcidWorks() {
-  if (!orcidList) {
-    return;
-  }
-
-  try {
-    const response = await fetch(ORCID_WORKS_URL, {
-      headers: {
-        Accept: 'application/json',
-      },
+  function show(page) {
+    activePage = page; root.dataset.activePage = page;
+    root.querySelector('.bp-scene-info').open = false;
+    panels.forEach(panel => { panel.hidden = panel.dataset.panel !== page; panel.style.opacity = '1'; });
+    root.querySelectorAll('.bp-nav [data-page]').forEach(link => {
+      if (link.dataset.page === page) link.setAttribute('aria-current', 'page');
+      else link.removeAttribute('aria-current');
     });
-
-    if (!response.ok) {
-      throw new Error(`ORCID request failed: ${response.status}`);
-    }
-
-    const data = await response.json();
-    const groups = data.group || [];
-    const works = groups
-      .map(selectGroupSummary)
-      .filter(Boolean)
-      .map(buildPublicationRecord)
-      .filter((work) => work.title)
-      .sort((left, right) => right.sortKey.localeCompare(left.sortKey))
-      .slice(0, 4);
-
-    if (publicationCount && groups.length) {
-      publicationCount.textContent = String(groups.length);
-    }
-
-    if (!works.length) {
-      orcidList.replaceChildren(createPublicationFallback());
-      return;
-    }
-
-    orcidList.replaceChildren(...works.map(createPublicationCard));
-  } catch (error) {
-    console.error(error);
-    orcidList.replaceChildren(createPublicationFallback());
+    root.querySelector('.bp-page-number').textContent = `SHEET ${numbers[page]} — ${page.toUpperCase()}`;
+    document.title = page === 'about' ? 'Austen Wallis | Computational Astrophysicist' : `Austen Wallis | ${page === 'cv' ? 'Curriculum vitae' : page[0].toUpperCase() + page.slice(1)}`;
+    root.dispatchEvent(new CustomEvent('aw:pagechange', { detail: { page } }));
   }
-}
-
-flipCards.forEach((card) => {
-  card.addEventListener('click', () => {
-    const isFlipped = card.classList.toggle('is-flipped');
-    card.setAttribute('aria-pressed', String(isFlipped));
-  });
-});
-
-if (sidebarButton) {
-  sidebarButton.addEventListener('click', () => {
-    setSidebarState(!sidebar.classList.contains('active'));
-  });
-}
-
-navLinks.forEach((link) => {
-  link.addEventListener('click', () => {
-    activatePage(link.dataset.target);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
-});
-
-if (contactForm && formButton) {
-  const updateFormState = () => {
-    formButton.disabled = !contactForm.checkValidity();
-  };
-
-  contactForm.addEventListener('input', updateFormState);
-  updateFormState();
-
-  contactForm.addEventListener('submit', (event) => {
+  async function changePage(value, { updateHistory = true, focus = true } = {}) {
+    const page = pageName(value), currentGeneration = ++generation;
+    const outgoing = root.querySelector(`[data-panel="${activePage}"]`), opacity = Number(getComputedStyle(outgoing).opacity);
+    if (animation) { animation.cancel(); animation = null; }
+    if (updateHistory && window.location.hash !== `#${page}`) history.pushState(null, '', `#${page}`);
+    if (page !== activePage && !reduced.matches && outgoing.animate) {
+      animation = outgoing.animate([{ opacity }, { opacity: 0 }], { duration: 120, easing: 'ease-in', fill: 'forwards' });
+      await animation.finished.catch(() => {});
+      if (generation !== currentGeneration) return;
+      animation.cancel(); animation = null;
+    }
+    show(page);
+    if (focus) window.scrollTo({ top: 0, behavior: 'auto' });
+    const incoming = root.querySelector(`[data-panel="${page}"]`);
+    // Move focus before the fade so a quick interaction in the new page is
+    // never overwritten when its animation finishes.
+    if (focus) { const heading = incoming.querySelector('h1, h2'); heading.setAttribute('tabindex', '-1'); heading.focus({ preventScroll: true }); }
+    if (!reduced.matches && incoming.animate && page !== outgoing.dataset.panel) {
+      incoming.style.opacity = '0';
+      animation = incoming.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 200, easing: 'ease-out', fill: 'forwards' });
+      await animation.finished.catch(() => {});
+      if (generation !== currentGeneration) return;
+      animation.cancel(); animation = null; incoming.style.opacity = '1';
+    }
+  }
+  root.querySelectorAll('[data-page]').forEach(link => link.addEventListener('click', event => {
+    if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || event.button !== 0) return;
+    event.preventDefault(); changePage(link.dataset.page);
+  }));
+  document.querySelector('.bp-skip-link').addEventListener('click', event => {
     event.preventDefault();
-
-    const formData = new FormData(contactForm);
-    const name = String(formData.get('name')).trim();
-    const email = String(formData.get('email')).trim();
-    const subject = String(formData.get('subject')).trim();
-    const message = String(formData.get('message')).trim();
-    const body = [
-      'Hi Austen,',
-      '',
-      message,
-      '',
-      `From: ${name}`,
-      `Reply to: ${email}`,
-    ].join('\n');
-
-    window.location.href = `mailto:agww2@cam.ac.uk?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    const main = document.getElementById('main-content');
+    main.setAttribute('tabindex', '-1'); main.focus({ preventScroll: true });
+    main.scrollIntoView({ block: 'start' });
   });
-}
+  window.addEventListener('hashchange', () => changePage(window.location.hash, { updateHistory: false }));
+  show(pageName(window.location.hash));
+  // The selected panel is now hidden/shown directly; retire the first-paint rule.
+  delete document.documentElement.dataset.initialPage;
+  window.addEventListener('load', () => {
+    if (window.location.hash && Object.hasOwn(numbers, pageName(window.location.hash))) window.scrollTo({ top: 0, behavior: 'auto' });
+  }, { once: true });
+  // Secondary navigation scrolls within the CV without changing the page hash.
+  root.querySelectorAll('[data-scroll-target]').forEach(button => button.addEventListener('click', () => {
+    const target = document.getElementById(button.dataset.scrollTarget);
+    if (!target) return;
+    target.scrollIntoView({ behavior: reduced.matches ? 'auto' : 'smooth', block: 'start' });
+    target.setAttribute('tabindex', '-1'); target.focus({ preventScroll: true });
+  }));
+  const modelInfo = root.querySelector('.bp-scene-info');
+  document.addEventListener('click', event => {
+    if (modelInfo.open && !modelInfo.contains(event.target)) modelInfo.open = false;
+  });
+  modelInfo.addEventListener('keydown', event => {
+    if (event.key === 'Escape') { modelInfo.open = false; modelInfo.querySelector('summary').focus(); }
+  });
 
-syncSidebarWithViewport();
-desktopQuery.addEventListener('change', syncSidebarWithViewport);
+  // Photographs remain normal links without JavaScript or dialog support.
+  const galleryLinks = [...root.querySelectorAll('[data-gallery-open]')];
+  const gallery = root.querySelector('.bp-lightbox');
+  let photoIndex = 0, photoTrigger = null;
+  function showPhoto(index) {
+    photoIndex = (index + galleryLinks.length) % galleryLinks.length;
+    const figure = galleryLinks[photoIndex].closest('figure'), original = figure.querySelector('img');
+    const image = gallery.querySelector('.bp-lightbox-image');
+    image.src = original.currentSrc || original.src; image.alt = original.alt;
+    gallery.querySelector('#gallery-title').textContent = figure.querySelector('h3').textContent;
+    gallery.querySelector('.bp-gallery-caption').textContent = figure.querySelector('figcaption p').textContent;
+    gallery.querySelector('.bp-gallery-count').textContent = `${String(photoIndex + 1).padStart(2, '0')} / ${String(galleryLinks.length).padStart(2, '0')}`;
+  }
+  galleryLinks.forEach((link, index) => link.addEventListener('click', event => {
+    if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || event.button !== 0 || !gallery.showModal) return;
+    event.preventDefault(); photoTrigger = link; showPhoto(index); gallery.showModal(); document.body.classList.add('bp-gallery-open');
+    gallery.querySelector('[data-gallery-close]').focus();
+  }));
+  gallery.querySelector('[data-gallery-close]').addEventListener('click', () => gallery.close());
+  gallery.querySelector('[data-gallery-previous]').addEventListener('click', () => showPhoto(photoIndex - 1));
+  gallery.querySelector('[data-gallery-next]').addEventListener('click', () => showPhoto(photoIndex + 1));
+  gallery.addEventListener('keydown', event => {
+    if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') { event.preventDefault(); showPhoto(photoIndex + (event.key === 'ArrowLeft' ? -1 : 1)); }
+  });
+  gallery.addEventListener('click', event => {
+    const box = gallery.getBoundingClientRect();
+    if (event.target === gallery && (event.clientX < box.left || event.clientX > box.right || event.clientY < box.top || event.clientY > box.bottom)) gallery.close();
+  });
+  gallery.addEventListener('close', () => { document.body.classList.remove('bp-gallery-open'); photoTrigger?.focus({ preventScroll: true }); });
 
-activatePage(normalisePageName(window.location.hash.replace('#', '').toLowerCase()), false);
-loadOrcidWorks();
-
-window.addEventListener('hashchange', () => {
-  activatePage(window.location.hash.replace('#', '').toLowerCase(), false);
-});
+  const ORCID_ID = '0000-0003-0770-9015';
+  const publicationTypes = new Set(['journal-article', 'preprint', 'conference-paper', 'conference-abstract', 'conference-poster', 'book', 'book-chapter', 'edited-book', 'report', 'review', 'working-paper']);
+  const fallback = JSON.parse(document.querySelector('[data-work-data]').textContent);
+  function safeLink(value) {
+    try { const url = new URL(value); if (['https:', 'http:'].includes(url.protocol) && !url.username && !url.password) return url.href; } catch {}
+    return `https://orcid.org/${ORCID_ID}`;
+  }
+  function cleanTitle(value) {
+    const text = document.createElement('textarea'); text.innerHTML = String(value || '').replace(/<[^>]*>/g, '');
+    return text.value.replace(/\s+/g, ' ').trim();
+  }
+  function selectSummary(group) {
+    const summaries = group['work-summary'] || [];
+    return summaries.find(summary => summary['external-ids']?.['external-id']?.some(id => id['external-id-type'] === 'doi')) || summaries[0];
+  }
+  function record(summary) {
+    const date = summary['publication-date'] || {}, year = date.year?.value || '';
+    const month = String(date.month?.value || '01').padStart(2, '0'), day = String(date.day?.value || '01').padStart(2, '0');
+    const ids = summary['external-ids']?.['external-id'] || [], doi = ids.find(id => id['external-id-type'] === 'doi')?.['external-id-value'];
+    const externalUrl = ids.find(id => id['external-id-url']?.value)?.['external-id-url']?.value;
+    return { title: cleanTitle(summary.title?.title?.value), type: summary.type,
+      meta: [cleanTitle(summary['journal-title']?.value), year].filter(Boolean).join(' · ') || 'Publication record',
+      date: year ? `${year}-${month}-${day}` : '0000-01-01',
+      link: safeLink(doi ? `https://doi.org/${String(doi).trim().replace(/^(https?:\/\/doi\.org\/|doi:\s*)/i, '')}` : externalUrl) };
+  }
+  function publicationRow(work) {
+    const row = document.createElement('li'), link = document.createElement('a'), body = document.createElement('span');
+    const title = document.createElement('span'), year = document.createElement('time'), meta = document.createElement('span');
+    row.dataset.year = work.date.slice(0, 4);
+    link.className = 'bp-publication-link'; link.href = safeLink(work.link); link.target = '_blank'; link.rel = 'noopener noreferrer';
+    year.className = 'bp-publication-year'; year.dateTime = work.date; year.textContent = row.dataset.year === '0000' ? '—' : row.dataset.year;
+    body.className = 'bp-publication-body'; title.className = 'bp-publication-title'; title.textContent = work.title;
+    meta.className = 'bp-publication-meta'; meta.title = work.meta;
+    meta.textContent = work.meta.replace(/ · \d{4}$/, '').replace('Monthly Notices of the Royal Astronomical Society', 'MNRAS');
+    body.append(title, meta);
+    const icon = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    icon.setAttribute('class', 'bp-icon'); icon.setAttribute('viewBox', '0 0 24 24'); icon.setAttribute('aria-hidden', 'true');
+    const use = document.createElementNS('http://www.w3.org/2000/svg', 'use'); use.setAttribute('href', './assets/icons/lucide.svg#arrow-up-right'); icon.append(use);
+    link.append(year, body, icon); row.append(link); return row;
+  }
+  const yearFilters = root.querySelector('[data-year-filters]'), fullList = root.querySelector('[data-publication-list]');
+  fullList.id = 'publication-results';
+  let selectedYear = 'all';
+  function filterPublications(year) {
+    selectedYear = year; let visible = 0;
+    [...fullList.children].forEach(row => { row.hidden = year !== 'all' && row.dataset.year !== year; if (!row.hidden) visible++; });
+    yearFilters.querySelectorAll('button').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.year === year)));
+    root.querySelector('[data-filter-status]').textContent = `Showing ${visible} publication${visible === 1 ? '' : 's'}${year === 'all' ? '' : ` from ${year}`}.`;
+  }
+  function renderYearFilters(papers) {
+    const years = ['all', ...new Set(papers.map(work => work.date.slice(0, 4)).filter(year => year !== '0000'))];
+    yearFilters.replaceChildren(...years.map(year => {
+      const button = document.createElement('button'); button.type = 'button'; button.dataset.year = year;
+      button.textContent = year === 'all' ? 'All years' : year; button.setAttribute('aria-controls', fullList.id);
+      button.addEventListener('click', () => filterPublications(year)); return button;
+    }));
+    filterPublications(years.includes(selectedYear) ? selectedYear : 'all');
+  }
+  function renderPublications(data, live = false) {
+    const papers = data.works.filter(work => publicationTypes.has(work.type) && work.title).sort((a, b) => b.date.localeCompare(a.date));
+    root.querySelectorAll('[data-paper-count]').forEach(item => item.textContent = String(papers.length));
+    root.querySelectorAll('[data-orcid-count]').forEach(item => item.textContent = String(data.count));
+    fullList.replaceChildren(...papers.map(publicationRow));
+    renderYearFilters(papers);
+    const date = live ? new Date() : new Date(`${data.updated}T12:00:00Z`);
+    const label = new Intl.DateTimeFormat('en-GB', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'Europe/London' }).format(date);
+    root.querySelectorAll('[data-publication-source]').forEach(item => { item.textContent = `ORCID · ${live ? 'updated' : 'snapshot'} ${label}`; item.dateTime = live ? date.toISOString() : data.updated; });
+  }
+  async function loadPublications() {
+    const controller = new AbortController(), timeout = setTimeout(() => controller.abort(), 8000);
+    try {
+      const response = await fetch(`https://pub.orcid.org/v3.0/${ORCID_ID}/works`, { headers: { Accept: 'application/json' }, signal: controller.signal });
+      if (!response.ok) throw new Error(`ORCID ${response.status}`);
+      const data = await response.json(); if (!Array.isArray(data.group)) throw new Error('Invalid ORCID response');
+      const works = data.group.map(selectSummary).filter(Boolean).map(record).filter(work => work.title);
+      if (data.group.length && !works.length) throw new Error('Empty publication records');
+      renderPublications({ count: data.group.length, works }, true);
+    } catch { /* Keep the dated, crawlable fallback when ORCID is unavailable. */ }
+    finally { clearTimeout(timeout); }
+  }
+  renderPublications(fallback); loadPublications();
+})();

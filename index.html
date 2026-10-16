@@ -6,15 +6,25 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description"
-    content="Austen Wallis (Austen G. W. Wallis) is a University of Cambridge research assistant working in scientific machine learning, Bayesian inference, accelerated computing, and astrophysics.">
-  <title>Austen Wallis | Scientific Machine Learning and Astrophysics</title>
+    content="Austen Wallis is a computational astrophysicist at the University of Cambridge, building AI-powered toolkits for stellar spectra, exoplanet atmospheres and accretion disc winds.">
+  <title>Austen Wallis | Computational Astrophysicist</title>
+  <script id="aw-initial-page">
+    // Select the first visible section before deferred scripts arrive.
+    (() => {
+      const names = { about: 'Computational Astrophysicist', publications: 'Publications', places: 'Places', cv: 'Curriculum vitae' };
+      const hash = window.location.hash.slice(1).toLowerCase();
+      const page = hash === 'papers' ? 'publications' : Object.hasOwn(names, hash) ? hash : 'about';
+      document.documentElement.dataset.initialPage = page;
+      document.title = `Austen Wallis | ${names[page]}`;
+    })();
+  </script>
   <link rel="canonical" href="https://austenwallis.github.io/">
   <meta name="google-site-verification" content="rGxnedR2vIsnTz5Y24Z8I7pbFR9C31BBTsMsY63bnz8">
   <meta property="og:type" content="profile">
-  <meta property="og:title" content="Austen Wallis | Scientific Machine Learning and Astrophysics">
-  <meta property="og:description" content="Research in scientific machine learning, Bayesian inference, accelerated computing, and astrophysics at the University of Cambridge.">
+  <meta property="og:title" content="Austen Wallis | Computational Astrophysicist">
+  <meta property="og:description" content="Computational astrophysicist building AI-powered toolkits. Stellar spectra, exoplanet atmospheres and accretion disc winds at the University of Cambridge.">
   <meta property="og:url" content="https://austenwallis.github.io/">
-  <meta property="og:image" content="https://austenwallis.github.io/assets/images/me.png">
+  <meta property="og:image" content="https://austenwallis.github.io/assets/images/portrait.jpg">
   <meta property="og:image:alt" content="Portrait of Austen Wallis">
   <meta name="twitter:card" content="summary">
   <script type="application/ld+json">
@@ -29,7 +39,7 @@
         "name": "Austen G. W. Wallis",
         "alternateName": "Austen Wallis",
         "url": "https://austenwallis.github.io/",
-        "image": "https://austenwallis.github.io/assets/images/me.png",
+        "image": "https://austenwallis.github.io/assets/images/portrait.jpg",
         "jobTitle": "Research Assistant in Exoplanetary Remote Sensing and Data Science",
         "worksFor": {
           "@type": "Organization",
@@ -39,6 +49,7 @@
         "sameAs": [
           "https://www.ast.cam.ac.uk/people/austen.wallis",
           "https://orcid.org/0000-0003-0770-9015",
+          "https://scholar.google.com/citations?user=xLjdznsAAAAJ&hl=en",
           "https://www.linkedin.com/in/austenwallis/",
           "https://github.com/AustenWallis",
           "https://huggingface.co/AustenWallis"
@@ -46,571 +57,276 @@
       }
     }
   </script>
-  <link rel="shortcut icon" href="./assets/images/logo.ico" type="image/x-icon">
-  <link rel="stylesheet" href="./assets/css/style.css">
+  <link rel="icon" href="./assets/images/logo.ico?v=joined-white-1" type="image/x-icon" sizes="16x16 32x32 48x48 64x64 128x128 256x256">
+  <link rel="icon" href="./assets/images/favicon.svg?v=joined-white-1" type="image/svg+xml" sizes="any">
+  <link rel="apple-touch-icon" href="./assets/images/apple-touch-icon.png?v=joined-white-1" sizes="180x180">
+  <link rel="stylesheet" href="./assets/css/style.css?v=about-polish-6">
+  <link rel="stylesheet" href="./assets/css/pet.css?v=star-pet-1">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600;6..72,700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap"
     rel="stylesheet">
 </head>
 
 <body>
-  <div class="page-shell">
-    <div class="ambient ambient-one" aria-hidden="true"></div>
-    <div class="ambient ambient-two" aria-hidden="true"></div>
-
-    <aside class="profile-card" data-sidebar>
-      <div class="profile-header">
-        <figure class="profile-mark">
-          <img src="./assets/images/me.png" alt="Headshot of Austen Wallis">
-        </figure>
-
-        <div class="profile-copy">
-          <p class="eyebrow">Exoplanets, spectral modelling, scientific machine learning</p>
-          <h1>Austen G. W. Wallis</h1>
-          <p class="role">
-            Research Assistant in Exoplanetary Remote Sensing and Data Science at the University of Cambridge.
-          </p>
+  <a class="bp-skip-link" href="#main-content">Skip to content</a>
+  <div id="aw-blueprint">
+    <div class="bp-sheet">
+      <aside class="bp-side" aria-label="Profile and navigation">
+        <div class="bp-side-content">
+          <p class="bp-side-name"><span class="bp-full-name">AUSTEN G. W.</span><span class="bp-mobile-name">A. G. W.</span><span>WALLIS</span></p>
+          <div class="bp-portrait"><div class="bp-portrait-crop"><img class="bp-portrait-photo" src="./assets/images/portrait.jpg" alt="Portrait of Austen Wallis" width="640" height="960" fetchpriority="high"></div></div>
+          <nav class="bp-nav" aria-label="Primary navigation">
+            <a href="#about" data-page="about" aria-current="page"><svg class="bp-icon " aria-hidden="true" viewBox="0 0 24 24"><use href="./assets/icons/lucide.svg#user-round"></use></svg><span class="bp-nav-label">About</span><span class="bp-number" aria-hidden="true">01</span></a>
+            <a href="#publications" data-page="publications"><svg class="bp-icon " aria-hidden="true" viewBox="0 0 24 24"><use href="./assets/icons/lucide.svg#book-open"></use></svg><span class="bp-nav-label">Publications</span><span class="bp-number" aria-hidden="true">02</span></a>
+            <a href="#places" data-page="places"><svg class="bp-icon " aria-hidden="true" viewBox="0 0 24 24"><use href="./assets/icons/lucide.svg#map-pin"></use></svg><span class="bp-nav-label">Places</span><span class="bp-number" aria-hidden="true">03</span></a>
+            <a href="#cv" data-page="cv"><svg class="bp-icon " aria-hidden="true" viewBox="0 0 24 24"><use href="./assets/icons/lucide.svg#file-text"></use></svg><span class="bp-nav-label">CV</span><span class="bp-number" aria-hidden="true">04</span></a>
+          </nav>
+          <div class="bp-profile-links">
+            <a href="https://www.linkedin.com/in/austenwallis/" target="_blank" rel="noopener noreferrer">LinkedIn <svg class="bp-icon bp-external-arrow" aria-hidden="true" viewBox="0 0 24 24"><use href="./assets/icons/lucide.svg#arrow-up-right"></use></svg></a>
+            <a href="https://github.com/AustenWallis" target="_blank" rel="noopener noreferrer">GitHub <svg class="bp-icon bp-external-arrow" aria-hidden="true" viewBox="0 0 24 24"><use href="./assets/icons/lucide.svg#arrow-up-right"></use></svg></a>
+            <a href="https://huggingface.co/AustenWallis" target="_blank" rel="noopener noreferrer">Hugging Face <svg class="bp-icon bp-external-arrow" aria-hidden="true" viewBox="0 0 24 24"><use href="./assets/icons/lucide.svg#arrow-up-right"></use></svg></a>
+          </div>
+          <div class="bp-side-bottom"><a href="mailto:a.wallis@ast.cam.ac.uk" aria-label="Email Me! — a.wallis@ast.cam.ac.uk"><svg class="bp-icon " aria-hidden="true" viewBox="0 0 24 24"><use href="./assets/icons/lucide.svg#mail"></use></svg><span>Email Me!</span></a><p class="bp-location">Cambridge, UK</p></div>
         </div>
-
-        <button class="profile-toggle" type="button" data-sidebar-btn aria-expanded="false">Show contacts</button>
-      </div>
-
-      <div class="profile-details">
-        <ul class="fact-list">
-          <li>
-            <span>Base</span>
-            <strong>Cambridge, UK</strong>
-          </li>
-          <li>
-            <span>Current role</span>
-            <strong>Research Assistant, University of Cambridge</strong>
-          </li>
-          <li>
-            <span>ORCID iD</span>
-            <strong><a class="text-link" href="https://orcid.org/0000-0003-0770-9015" target="_blank" rel="noopener noreferrer">0000-0003-0770-9015</a></strong>
-          </li>
-        </ul>
-
-        <div class="cta-row">
-          <a class="button button-primary" href="./Academic_CV.pdf" target="_blank" rel="noreferrer">Download CV</a>
-          <a class="button button-secondary" href="mailto:agww2@cam.ac.uk">Email Austen</a>
-        </div>
-
-        <div class="profile-panel">
-          <h2>Current research</h2>
-          <p>
-            Modelling M-dwarf spectra and stellar variability so uncertainty in the host star can be carried through
-            to exoplanet-atmosphere inference with JWST data.
-          </p>
-        </div>
-
-        <ul class="social-links">
-          <li><a href="https://www.ast.cam.ac.uk/people/austen.wallis" target="_blank" rel="noopener noreferrer">Cambridge profile</a></li>
-          <li><a href="https://linkedin.com/in/austenwallis" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
-          <li><a href="https://github.com/AustenWallis" target="_blank" rel="noopener noreferrer">GitHub</a></li>
-          <li><a href="https://huggingface.co/AustenWallis" target="_blank" rel="noopener noreferrer">Hugging Face</a></li>
-        </ul>
-      </div>
-    </aside>
-
-    <main class="content-panel">
-      <nav class="site-nav" aria-label="Primary">
-        <button class="nav-link active" type="button" data-nav-link data-target="about" aria-current="page">About</button>
-        <button class="nav-link" type="button" data-nav-link data-target="cv">CV</button>
-        <button class="nav-link" type="button" data-nav-link data-target="places">Places</button>
-        <button class="nav-link" type="button" data-nav-link data-target="contact">Contact</button>
-      </nav>
-
-      <article class="page-section active" data-page="about" id="about">
-        <section class="hero">
-          <p class="section-kicker">Scientific machine learning</p>
-          <h2>Fast, reliable inference for complex systems.</h2>
-          <p class="section-intro">
-            I develop machine-learning tools and scientific software for complex physical systems. My work combines
-            accelerated computing and simulation emulators to make models faster, with Bayesian inference and
-            uncertainty quantification to connect them with data. I have applied these methods in astrophysics,
-            fusion research, and weather modelling.
-          </p>
-        </section>
-
-        <section class="info-card" aria-labelledby="research-toolkit-title">
-          <p class="kicker-chip">Across my research</p>
-          <h3 id="research-toolkit-title">Methods I bring together</h3>
-          <ul class="pill-list">
-            <li>Accelerated computing</li>
-            <li>Physical modelling</li>
-            <li>Machine-learning emulators</li>
-            <li>Bayesian inference</li>
-            <li>Uncertainty quantification</li>
-            <li>Scientific software</li>
-          </ul>
-        </section>
-
-        <section class="highlights-panel" aria-labelledby="research-highlights-title">
-          <div class="stats-heading">
-            <h3 id="research-highlights-title">Research Highlights</h3>
-            <p class="stats-note">Click a card to flip for detail.</p>
-          </div>
-
-          <div class="stats-grid" aria-label="Research highlights">
-            <button class="stat-card flip-card" type="button" data-flip-card aria-pressed="false">
-              <span class="flip-card-inner">
-                <span class="flip-card-face flip-card-front">
-                  <span class="stat-logo">ORCID</span>
-                  <span class="stat-front-copy">
-                    <span class="stat-front-label">Research outputs</span>
-                    <strong class="stat-front-value" data-publication-count>—</strong>
-                  </span>
-                  <span class="flip-prompt">Click to flip</span>
-                </span>
-
-                <span class="flip-card-face flip-card-back">
-                  <span class="stat-back-label">Research outputs</span>
-                  <p>Live count of works listed in my ORCID record.</p>
-                </span>
-              </span>
-            </button>
-
-            <button class="stat-card flip-card" type="button" data-flip-card aria-pressed="false">
-              <span class="flip-card-inner">
-                <span class="flip-card-face flip-card-front">
-                  <span class="stat-logo">BIG DATA</span>
-                  <span class="stat-front-copy">
-                    <span class="stat-front-label">Synthetic library</span>
-                    <strong class="stat-front-value">100k+</strong>
-                  </span>
-                  <span class="flip-prompt">Click to flip</span>
-                </span>
-
-                <span class="flip-card-face flip-card-back">
-                  <span class="stat-back-label">Synthetic library</span>
-                  <p>Released spectra for rapid analysis of accretion-driven outflows.</p>
-                </span>
-              </span>
-            </button>
-
-            <button class="stat-card flip-card" type="button" data-flip-card aria-pressed="false">
-              <span class="flip-card-inner">
-                <span class="flip-card-face flip-card-front">
-                  <span class="stat-logo">FAST INFERENCE</span>
-                  <span class="stat-front-copy">
-                    <span class="stat-front-label">Surrogate acceleration</span>
-                    <strong class="stat-front-value">2M x</strong>
-                  </span>
-                  <span class="flip-prompt">Click to flip</span>
-                </span>
-
-                <span class="flip-card-face flip-card-back">
-                  <span class="stat-back-label">Surrogate acceleration</span>
-                  <p>Speed-up achieved in UKAEA plasma-pressure modelling research.</p>
-                </span>
-              </span>
-            </button>
-
-            <button class="stat-card flip-card" type="button" data-flip-card aria-pressed="false">
-              <span class="flip-card-inner">
-                <span class="flip-card-face flip-card-front">
-                  <span class="stat-logo">TEACH</span>
-                  <span class="stat-front-copy">
-                    <span class="stat-front-label">Students supported</span>
-                    <strong class="stat-front-value">150+</strong>
-                  </span>
-                  <span class="flip-prompt">Click to flip</span>
-                </span>
-
-                <span class="flip-card-face flip-card-back">
-                  <span class="stat-back-label">Students supported</span>
-                  <p>Mentored in scientific Python, data analysis, and evidence-based physics.</p>
-                </span>
-              </span>
-            </button>
-          </div>
-        </section>
-
-        <section class="info-card">
-          <div class="publication-header">
-            <div>
-              <p class="kicker-chip">From ORCID</p>
-              <h3>Recent work</h3>
-            </div>
-
-            <a class="text-link" href="https://orcid.org/0000-0003-0770-9015" target="_blank" rel="noopener noreferrer">View ORCID</a>
-          </div>
-
-          <div class="publication-list" data-orcid-list>
-            <p class="publication-status">Loading recent work from ORCID...</p>
-          </div>
-        </section>
-      </article>
-
-      <article class="page-section" data-page="cv" id="cv" hidden>
-        <section class="section-header">
-          <p class="section-kicker">Curriculum vitae</p>
-          <div class="section-header-row">
-            <div>
-              <h2>What I've done ...</h2>
-              <p class="section-intro">
-                Selected research, publications, teaching, and technical work.
-              </p>
-            </div>
-
-            <a class="button button-primary" href="./Academic_CV.pdf" target="_blank" rel="noreferrer">Open full CV</a>
-          </div>
-        </section>
-
-        <section class="cv-layout">
-          <div class="timeline-block">
-            <h3>Education</h3>
-            <ol class="timeline">
-              <li class="timeline-item">
-                <h4>PhD candidate in Astrophysics</h4>
-                <span class="timeline-meta">University of Southampton | Sept 2022 - Present</span>
-                <p>
-                  Thesis: <strong>Emulator-based inference of imperfect and complex astrophysical models: Reducing
-                    Millions of Computational Hours to Minutes</strong>.
-                </p>
-              </li>
-
-              <li class="timeline-item">
-                <h4>MPhys in Astrophysics with a Year of Research</h4>
-                <span class="timeline-meta">University of Southampton | Sept 2017 - July 2021</span>
-                <p>
-                  First class honours with an 80% average. Final-year thesis on calibrating a new cosmological standard
-                  candle using active galactic nuclei.
-                </p>
-              </li>
-            </ol>
-          </div>
-
-          <div class="timeline-block">
-            <h3>Research and industry</h3>
-            <ol class="timeline">
-              <li class="timeline-item">
-                <h4>Research Assistant in Exoplanetary Remote Sensing and Data Science</h4>
-                <span class="timeline-meta">Institute of Astronomy, University of Cambridge | Sept 2026 - Present</span>
-                <p>
-                  Modelling M-dwarf spectra and stellar variability to support exoplanet-atmosphere inference with
-                  JWST observations.
-                </p>
-              </li>
-
-              <li class="timeline-item">
-                <h4>Postgraduate Researcher</h4>
-                <span class="timeline-meta">University of Southampton | Sept 2022 - Present</span>
-                <p>
-                  Developed <strong>speculate</strong>, refined outflow diagnostics, and released a synthetic spectral
-                  library for rapid physical inference as part of doctoral research now nearing submission.
-                </p>
-              </li>
-
-              <li class="timeline-item">
-                <h4>AI Research Scientist</h4>
-                <span class="timeline-meta">IBM Research, Daresbury | June 2025 - Sept 2025</span>
-                <p>
-                  Worked on non-gradient optimisation in PDE solution spaces and large-scale synthetic weather data for
-                  the IBM-NASA Prithvi effort.
-                </p>
-              </li>
-
-              <li class="timeline-item">
-                <h4>Machine Learning Research Scientist</h4>
-                <span class="timeline-meta">UK Atomic Energy Authority, Culham | June 2024 - Sept 2024</span>
-                <p>
-                  Built a deep-ensemble surrogate for plasma-pressure prediction that was dramatically faster and more
-                  accurate than the baseline approach.
-                </p>
-              </li>
-
-              <li class="timeline-item">
-                <h4>Student Researcher</h4>
-                <span class="timeline-meta">IAC and University of La Laguna, Tenerife | Jan 2019 - June 2019</span>
-                <p>
-                  Studied Jupiter's mass and rotational flattening while gaining observatory experience on the IAC-80,
-                  TCS, and Mons facilities.
-                </p>
-              </li>
-            </ol>
-          </div>
-        </section>
-
-        <section class="split-grid">
-          <div class="info-card">
-            <h3>Awards</h3>
-            <ul class="bullet-list">
-              <li>STAG Research Prize for Best Publication in Astrophysics, 2025.</li>
-              <li>Best PhD Poster, SEPnet Employers Exhibition, 2024.</li>
-              <li>Second place, DISCnet LIV.INNO ML Kaggle competition, 2024.</li>
-              <li>2025 IBMer watsonx Challenger.</li>
-            </ul>
-          </div>
-
-          <div class="info-card">
-            <h3>Teaching and talks</h3>
-            <ul class="bullet-list">
-              <li>PHYS2022 demonstrator, mentoring 150+ students in scientific Python and data analysis.</li>
-              <li>PHYS2011 teaching assistant across 57 workshop hours in astronomy design and observation.</li>
-              <li>Speaker at RAS ML/AI Astronomy, PyData Southampton, PyData London, and other research venues.</li>
-            </ul>
-          </div>
-        </section>
-
-        <section class="info-card">
-          <div class="publication-header">
-            <div>
-              <p class="kicker-chip">Featured on ORCID</p>
-              <h3>Featured publications</h3>
-            </div>
-
-            <a class="text-link" href="https://orcid.org/0000-0003-0770-9015" target="_blank" rel="noopener noreferrer">View ORCID</a>
-          </div>
-
-          <div class="publication-list">
-            <a href="https://doi.org/10.1093/mnras/staf1450" target="_blank" rel="noopener noreferrer">
-              <strong>A diagnostic kit for optical emission lines shaped by accretion disc winds</strong>
-              <span>Monthly Notices of the Royal Astronomical Society · 2025</span>
+        <button class="bp-pet-toggle" type="button" role="switch" aria-label="Star pet" aria-checked="true" data-pet-toggle hidden>
+          <img src="./assets/images/pet/star-idle.webp" alt="" width="28" height="28" decoding="async">
+          <span>Pet</span><span class="bp-pet-toggle-state" data-pet-state>On</span><span class="bp-pet-switch" aria-hidden="true"></span>
+        </button>
+      </aside>
+      <main class="bp-main" id="main-content">
+        <header class="bp-topline"><span class="bp-top-motif">STARS / SPECTRA / MODELS</span><span class="bp-page-number">SHEET 01 — ABOUT</span></header>
+        <section class="bp-panel" data-panel="about" id="about" aria-labelledby="headline">
+          <div class="bp-hero">
+            <h1 class="bp-name" id="headline"><span>Computational<br>Astrophysicist</span><span class="bp-headline-detail">Building AI-Powered Toolkits <svg class="bp-icon " aria-hidden="true" viewBox="0 0 24 24"><use href="./assets/icons/lucide.svg#telescope"></use></svg></span></h1>
+            <a class="bp-affiliation" href="https://www.ast.cam.ac.uk/people/austen.wallis" target="_blank" rel="noopener noreferrer">
+              <img src="./assets/images/organisations/cambridge.svg" alt="University of Cambridge" width="211" height="44">
+              <span><span class="bp-affiliation-role">Research Assistant <svg class="bp-icon" aria-hidden="true" viewBox="0 0 24 24"><use href="./assets/icons/lucide.svg#arrow-up-right"></use></svg></span><span class="bp-affiliation-institute">Institute of Astronomy</span></span>
             </a>
-
-            <a href="https://doi.org/10.1093/mnras/stae2677" target="_blank" rel="noopener noreferrer">
-              <strong>SIROCCO: a publicly available Monte Carlo ionization and radiative transfer code for astrophysical outflows</strong>
-              <span>Monthly Notices of the Royal Astronomical Society · 2024</span>
-            </a>
+            <canvas class="bp-canvas" role="img" aria-label="An animated schematic of a rotating star and orbiting exoplanet. Illustrative, not to scale.">A rotating star and an orbiting exoplanet.</canvas>
+            <a class="bp-hero-link" href="#publications" data-page="publications"><span><span class="bp-eyebrow">Explore my work</span><span class="bp-hero-link-label">Publications <span class="bp-count-badge" data-paper-count>6</span></span></span><svg class="bp-icon" aria-hidden="true" viewBox="0 0 24 24"><use href="./assets/icons/lucide.svg#arrow-up-right"></use></svg></a>
           </div>
+          <div class="bp-scene-toolbar bp-js-control">
+            <div class="bp-scene-controls" role="group" aria-label="Astrophysical systems">
+              <button type="button" class="bp-previous bp-icon-button" aria-label="Previous astrophysical system" title="Previous system"><svg class="bp-icon " aria-hidden="true" viewBox="0 0 24 24"><use href="./assets/icons/lucide.svg#arrow-left"></use></svg></button>
+              <span class="bp-scene-label" aria-live="polite">Star + exoplanet<small>01 / 06</small></span>
+              <button type="button" class="bp-next bp-icon-button" aria-label="Next astrophysical system" title="Next system"><svg class="bp-icon " aria-hidden="true" viewBox="0 0 24 24"><use href="./assets/icons/lucide.svg#arrow-right"></use></svg></button>
+            </div>
+            <button type="button" class="bp-motion bp-icon-button" aria-label="Pause animation" title="Pause animation" aria-pressed="false" data-state="running"><svg class="bp-icon bp-pause-icon" aria-hidden="true" viewBox="0 0 24 24"><use href="./assets/icons/lucide.svg#pause"></use></svg><svg class="bp-icon bp-play-icon" aria-hidden="true" viewBox="0 0 24 24"><use href="./assets/icons/lucide.svg#play"></use></svg><span class="bp-motion-label bp-sr-only">Pause</span></button>
+            <button type="button" class="bp-replay bp-icon-button" aria-label="Replay compute intro" title="Replay compute intro"><svg class="bp-icon " aria-hidden="true" viewBox="0 0 24 24"><use href="./assets/icons/lucide.svg#rotate-ccw"></use></svg></button>
+            <button type="button" class="bp-skip bp-icon-button" aria-label="Skip compute intro" title="Skip intro" hidden><svg class="bp-icon " aria-hidden="true" viewBox="0 0 24 24"><use href="./assets/icons/lucide.svg#skip-forward"></use></svg></button>
+            <details class="bp-scene-info">
+              <summary class="bp-icon-button" aria-label="About this model" title="About this model"><svg class="bp-icon " aria-hidden="true" viewBox="0 0 24 24"><use href="./assets/icons/lucide.svg#info"></use></svg></summary>
+              <div class="bp-model-note"><p class="bp-scene-detail">Transit spectroscopy / secondary eclipse / thermal phase</p><p>Illustrative models.</p></div>
+            </details>
+            <span class="bp-status bp-sr-only" aria-live="polite">SYSTEM / IN MOTION</span>
+          </div>
+          <a class="bp-hero-link bp-mobile-work-link" href="#publications" data-page="publications"><span><span class="bp-eyebrow">Explore my work</span><span class="bp-hero-link-label">Publications <span class="bp-count-badge" data-paper-count>6</span></span></span><svg class="bp-icon" aria-hidden="true" viewBox="0 0 24 24"><use href="./assets/icons/lucide.svg#arrow-up-right"></use></svg></a>
+          <section class="bp-about-copy" aria-label="About Austen">
+            <ul class="bp-role-titles" aria-label="Professional disciplines"><li>Data Scientist</li><li>Machine Learning Engineer</li><li>AI Researcher</li></ul>
+            <p class="bp-current-role">I’m a <a href="https://www.ast.cam.ac.uk/people/austen.wallis" target="_blank" rel="noopener noreferrer">Research Assistant <svg class="bp-icon" aria-hidden="true" viewBox="0 0 24 24"><use href="./assets/icons/lucide.svg#arrow-up-right"></use></svg></a> at the University of Cambridge’s Institute of Astronomy.</p>
+            <div class="bp-research-notes">
+              <p>My research turns astronomical spectra into constraints on the physics of complex astrophysical systems. At Cambridge, I work with Nikku Madhusudhan’s Hycean group to disentangle planetary signatures from the changing spectra of their host stars, bringing together stellar physics, machine learning and Bayesian inference for JWST observations.</p>
+              <p>Previously, I developed <a href="https://github.com/AustenWallis/Speculate" target="_blank" rel="noopener noreferrer">SPECULATE</a> during my doctoral research at Southampton: an open-source framework for emulating accretion-disc spectra and probing the physics of their winds. My work has also taken me beyond astronomy, into numerical weather prediction at IBM Research and fusion-plasma diagnostics at UKAEA.</p>
+            </div>
+          </section>
         </section>
-
-        <section class="info-card">
-          <p class="kicker-chip">Technical stack</p>
-          <h3>Tools I use regularly</h3>
-          <ul class="pill-list">
-            <li>Python</li>
-            <li>C</li>
-            <li>Julia</li>
-            <li>TensorFlow</li>
-            <li>PyTorch</li>
-            <li>JAX</li>
-            <li>Scikit-Learn</li>
-            <li>NumPy</li>
-            <li>SciPy</li>
-            <li>Pandas</li>
-            <li>Polars</li>
-            <li>Dask</li>
-            <li>Xarray</li>
-            <li>Matplotlib</li>
-            <li>Vega-Altair</li>
-            <li>Streamlit</li>
-            <li>Jupyter</li>
-            <li>Marimo</li>
-            <li>Git</li>
-            <li>Linux</li>
-            <li>SLURM</li>
-            <li>LSF</li>
-          </ul>
+        <section class="bp-panel bp-other" data-panel="publications" id="publications" aria-labelledby="publications-title">
+          <div class="bp-section-heading">
+            <h2 id="publications-title" class="bp-section-title">Publications <span class="bp-count-badge" data-paper-count>6</span></h2>
+            <nav class="bp-publication-profiles" aria-label="Research profiles">
+              <a class="bp-text-link bp-research-profile" href="https://orcid.org/0000-0003-0770-9015" target="_blank" rel="noopener noreferrer"><span>ORCID</span><svg class="bp-icon" aria-hidden="true" viewBox="0 0 24 24"><use href="./assets/icons/lucide.svg#arrow-up-right"></use></svg><span class="bp-profile-id">0000-0003-0770-9015</span></a>
+              <a class="bp-text-link bp-research-profile" href="https://scholar.google.com/citations?user=xLjdznsAAAAJ&amp;hl=en" target="_blank" rel="noopener noreferrer"><span>Google Scholar</span><svg class="bp-icon" aria-hidden="true" viewBox="0 0 24 24"><use href="./assets/icons/lucide.svg#arrow-up-right"></use></svg></a>
+            </nav>
+          </div>
+          <div class="bp-publication-tools bp-js-control"><div class="bp-year-filters" role="group" aria-label="Filter publications by year" data-year-filters></div><span class="bp-filter-status bp-sr-only" role="status" data-filter-status></span></div>
+          <ol class="bp-publication-list" data-publication-list>
+              <li><a class="bp-publication-link" href="https://doi.org/10.1093/mnras/stag1175" target="_blank" rel="noopener noreferrer"><time class="bp-publication-year" datetime="2026-07-25">2026</time><span class="bp-publication-body"><span class="bp-publication-title">Optical outburst evolution of the transient black hole X-ray binary Swift J1727.8−1613: disc response to jet ejections and late-outburst emergence of powerful disc winds</span><span class="bp-publication-meta">MNRAS</span></span><svg class="bp-icon " aria-hidden="true" viewBox="0 0 24 24"><use href="./assets/icons/lucide.svg#arrow-up-right"></use></svg></a></li>
+              <li><a class="bp-publication-link" href="https://doi.org/10.1093/mnras/stag592" target="_blank" rel="noopener noreferrer"><time class="bp-publication-year" datetime="2026-04-24">2026</time><span class="bp-publication-body"><span class="bp-publication-title">Radiation-ionization hydrodynamic simulations of AGN line-driven winds lead to transient shielding and BAL/UFO signatures</span><span class="bp-publication-meta">MNRAS</span></span><svg class="bp-icon " aria-hidden="true" viewBox="0 0 24 24"><use href="./assets/icons/lucide.svg#arrow-up-right"></use></svg></a></li>
+              <li><a class="bp-publication-link" href="https://doi.org/10.1093/mnras/staf2183" target="_blank" rel="noopener noreferrer"><time class="bp-publication-year" datetime="2025-12-22">2025</time><span class="bp-publication-body"><span class="bp-publication-title">The critical role of clumping in line-driven disc winds</span><span class="bp-publication-meta">MNRAS</span></span><svg class="bp-icon " aria-hidden="true" viewBox="0 0 24 24"><use href="./assets/icons/lucide.svg#arrow-up-right"></use></svg></a></li>
+              <li><a class="bp-publication-link" href="https://doi.org/10.1093/mnras/staf1450" target="_blank" rel="noopener noreferrer"><time class="bp-publication-year" datetime="2025-09-16">2025</time><span class="bp-publication-body"><span class="bp-publication-title">A diagnostic kit for optical emission lines shaped by accretion disc winds</span><span class="bp-publication-meta">MNRAS</span></span><svg class="bp-icon " aria-hidden="true" viewBox="0 0 24 24"><use href="./assets/icons/lucide.svg#arrow-up-right"></use></svg></a></li>
+              <li><a class="bp-publication-link" href="https://doi.org/10.1093/mnras/staf1101" target="_blank" rel="noopener noreferrer"><time class="bp-publication-year" datetime="2025-07-21">2025</time><span class="bp-publication-body"><span class="bp-publication-title">Monte Carlo radiation hydrodynamic simulations of line-driven disc winds: relaxing the isothermal approximation</span><span class="bp-publication-meta">MNRAS</span></span><svg class="bp-icon " aria-hidden="true" viewBox="0 0 24 24"><use href="./assets/icons/lucide.svg#arrow-up-right"></use></svg></a></li>
+              <li><a class="bp-publication-link" href="https://doi.org/10.1093/mnras/stae2677" target="_blank" rel="noopener noreferrer"><time class="bp-publication-year" datetime="2024-12-04">2024</time><span class="bp-publication-body"><span class="bp-publication-title">SIROCCO: a publicly available Monte Carlo ionization and radiative transfer code for astrophysical outflows</span><span class="bp-publication-meta">MNRAS</span></span><svg class="bp-icon " aria-hidden="true" viewBox="0 0 24 24"><use href="./assets/icons/lucide.svg#arrow-up-right"></use></svg></a></li>
+            </ol>
+          <div class="bp-publication-source"><time data-publication-source datetime="2026-10-09">ORCID · snapshot 9 Oct 2026</time><span><span data-orcid-count>7</span> ORCID works, including software</span></div>
         </section>
-      </article>
-
-      <article class="page-section" data-page="places" id="places" hidden>
-        <section class="section-header">
-          <p class="section-kicker">Places</p>
-          <h2>Where my work has taken me ...</h2>
-          <p class="section-intro">
-            A few places tied to the PhD, observatory work, industry placements, talks, and public-facing events.
-          </p>
-        </section>
-
-        <section class="places-grid">
-          <figure class="place-card place-card-feature place-card-feature-left">
-            <img src="./assets/images/places/southampton.JPG" alt="Group photo in Southampton">
+        <section class="bp-panel bp-other" data-panel="places" id="places" aria-labelledby="places-title">
+          <h2 id="places-title" class="bp-section-title">Places</h2>
+          <p class="bp-section-intro">From observatory nights to conference stages.</p>
+          <div class="bp-places-grid"><figure class="bp-place">
+            <a class="bp-photo-open" href="./assets/images/places/web/southampton.jpg" aria-label="Enlarge photo: Southampton, UK" data-gallery-open><img loading="lazy" decoding="async" src="./assets/images/places/web/southampton.jpg" alt="Group photo in Southampton" width="1400" height="734"><span class="bp-photo-expand" aria-hidden="true"><svg class="bp-icon " aria-hidden="true" viewBox="0 0 24 24"><use href="./assets/icons/lucide.svg#maximize-2"></use></svg></span></a>
             <figcaption>
-              <span class="place-meta">Doctoral research</span>
+              <span class="bp-eyebrow">Doctoral research</span>
               <h3>Southampton, UK</h3>
-              <p>A department group photo from Southampton, where I carried out most of my doctoral research and teaching.</p>
+              <p>Southampton colleagues during my doctoral research.</p>
             </figcaption>
           </figure>
 
-          <figure class="place-card">
-            <img src="./assets/images/places/tenerife.jpeg" alt="Austen Wallis in an observatory in Tenerife">
+          <figure class="bp-place">
+            <a class="bp-photo-open" href="./assets/images/places/web/tenerife.jpg" aria-label="Enlarge photo: Tenerife, Spain" data-gallery-open><img loading="lazy" decoding="async" src="./assets/images/places/web/tenerife.jpg" alt="Austen Wallis in an observatory in Tenerife" width="1400" height="1050"><span class="bp-photo-expand" aria-hidden="true"><svg class="bp-icon " aria-hidden="true" viewBox="0 0 24 24"><use href="./assets/icons/lucide.svg#maximize-2"></use></svg></span></a>
             <figcaption>
-              <span class="place-meta">Observatory work</span>
+              <span class="bp-eyebrow">Observatory work</span>
               <h3>Tenerife, Spain</h3>
-              <p>Night-time observatory work from my student research period with the IAC and the University of La Laguna.</p>
+              <p>Observatory work with the IAC and University of La Laguna.</p>
             </figcaption>
           </figure>
 
-          <figure class="place-card">
-            <img src="./assets/images/places/culham-fixed.jpg" alt="Austen Wallis at Culham">
+          <figure class="bp-place">
+            <a class="bp-photo-open" href="./assets/images/places/web/culham.jpg" aria-label="Enlarge photo: Culham, UK" data-gallery-open><img loading="lazy" decoding="async" src="./assets/images/places/web/culham.jpg" alt="Austen Wallis at Culham" width="1400" height="787"><span class="bp-photo-expand" aria-hidden="true"><svg class="bp-icon " aria-hidden="true" viewBox="0 0 24 24"><use href="./assets/icons/lucide.svg#maximize-2"></use></svg></span></a>
             <figcaption>
-              <span class="place-meta">UKAEA placement</span>
+              <span class="bp-eyebrow">UKAEA placement</span>
               <h3>Culham, UK</h3>
-              <p>From my UKAEA placement, where I worked on surrogate modelling for plasma-pressure prediction.</p>
+              <p>Plasma-pressure surrogate modelling at UKAEA.</p>
             </figcaption>
           </figure>
 
-          <figure class="place-card place-card-feature place-card-feature-right">
-            <img src="./assets/images/places/daresbury.jpg" alt="Austen Wallis at the Hartree Centre in Daresbury">
+          <figure class="bp-place">
+            <a class="bp-photo-open" href="./assets/images/places/web/daresbury.jpg" aria-label="Enlarge photo: Daresbury, UK" data-gallery-open><img loading="lazy" decoding="async" src="./assets/images/places/web/daresbury.jpg" alt="Austen Wallis at the Hartree Centre in Daresbury" width="1400" height="788"><span class="bp-photo-expand" aria-hidden="true"><svg class="bp-icon " aria-hidden="true" viewBox="0 0 24 24"><use href="./assets/icons/lucide.svg#maximize-2"></use></svg></span></a>
             <figcaption>
-              <span class="place-meta">IBM Research placement</span>
+              <span class="bp-eyebrow">IBM Research placement</span>
               <h3>Daresbury, UK</h3>
-              <p>At the Hartree Centre during my IBM Research placement, focused on optimisation and weather-scale machine-learning workflows.</p>
+              <p>Machine learning and optimisation at IBM Research’s Hartree Centre.</p>
             </figcaption>
           </figure>
 
-          <figure class="place-card place-card-feature place-card-feature-left">
-            <img src="./assets/images/places/IBM%20Dublin.JPG" alt="Austen Wallis speaking at Trinity College Dublin">
+          <figure class="bp-place">
+            <a class="bp-photo-open" href="./assets/images/places/web/dublin.jpg" aria-label="Enlarge photo: Trinity College Dublin" data-gallery-open><img loading="lazy" decoding="async" src="./assets/images/places/web/dublin.jpg" alt="Austen Wallis speaking at Trinity College Dublin" width="1400" height="931"><span class="bp-photo-expand" aria-hidden="true"><svg class="bp-icon " aria-hidden="true" viewBox="0 0 24 24"><use href="./assets/icons/lucide.svg#maximize-2"></use></svg></span></a>
             <figcaption>
-              <span class="place-meta">Talk</span>
+              <span class="bp-eyebrow">Talk</span>
               <h3>Trinity College Dublin</h3>
-              <p>Speaking about the WRF Weather Forge and global-scale forecasting work during my IBM Research period.</p>
+              <p>Presenting WRF Weather Forge and global forecasting work.</p>
             </figcaption>
           </figure>
 
-          <figure class="place-card">
-            <img src="./assets/images/places/winchester.jpg" alt="Austen Wallis in Winchester">
+          <figure class="bp-place">
+            <a class="bp-photo-open" href="./assets/images/places/web/winchester.jpg" aria-label="Enlarge photo: Winchester, UK" data-gallery-open><img loading="lazy" decoding="async" src="./assets/images/places/web/winchester.jpg" alt="Architectural rendering of a modern house in Winchester" width="1400" height="875"><span class="bp-photo-expand" aria-hidden="true"><svg class="bp-icon " aria-hidden="true" viewBox="0 0 24 24"><use href="./assets/icons/lucide.svg#maximize-2"></use></svg></span></a>
             <figcaption>
-              <span class="place-meta">Local work</span>
+              <span class="bp-eyebrow">Local work</span>
               <h3>Winchester, UK</h3>
-              <p>A quieter point on the map tied to part-time planning and development work with Wallco alongside the PhD.</p>
+              <p>Planning and development work with Wallco, alongside my PhD.</p>
             </figcaption>
           </figure>
 
-          <figure class="place-card">
-            <img src="./assets/images/places/pydata_southampton.jpeg" alt="Austen Wallis speaking at PyData Southampton">
+          <figure class="bp-place">
+            <a class="bp-photo-open" href="./assets/images/places/web/pydata-southampton.jpg" aria-label="Enlarge photo: PyData Southampton" data-gallery-open><img loading="lazy" decoding="async" src="./assets/images/places/web/pydata-southampton.jpg" alt="Austen Wallis speaking at PyData Southampton" width="1400" height="1050"><span class="bp-photo-expand" aria-hidden="true"><svg class="bp-icon " aria-hidden="true" viewBox="0 0 24 24"><use href="./assets/icons/lucide.svg#maximize-2"></use></svg></span></a>
             <figcaption>
-              <span class="place-meta">Community talk</span>
+              <span class="bp-eyebrow">Community talk</span>
               <h3>PyData Southampton</h3>
-              <p>Sharing work on machine learning and scientific computing with the local data and software community.</p>
+              <p>Machine learning and scientific computing with the local PyData community.</p>
             </figcaption>
           </figure>
 
-          <figure class="place-card place-card-feature place-card-feature-right">
-            <img src="./assets/images/places/pydata%20London%20Lightening%202024.jpeg" alt="Audience view during Austen Wallis's PyData London 2024 lightning talk">
+          <figure class="bp-place">
+            <a class="bp-photo-open" href="./assets/images/places/web/pydata-london.jpg" aria-label="Enlarge photo: PyData London 2024" data-gallery-open><img loading="lazy" decoding="async" src="./assets/images/places/web/pydata-london.jpg" alt="Audience view during Austen Wallis's PyData London 2024 lightning talk" width="1400" height="1054"><span class="bp-photo-expand" aria-hidden="true"><svg class="bp-icon " aria-hidden="true" viewBox="0 0 24 24"><use href="./assets/icons/lucide.svg#maximize-2"></use></svg></span></a>
             <figcaption>
-              <span class="place-meta">Lightning talk</span>
+              <span class="bp-eyebrow">Lightning talk</span>
               <h3>PyData London 2024</h3>
-              <p>Speaking to the wider Python and data community in London, sharing research-facing machine-learning work in a fast-paced conference setting.</p>
+              <p>A lightning talk at PyData London 2024.</p>
             </figcaption>
           </figure>
 
-          <figure class="place-card place-card-feature place-card-feature-left">
-            <img src="./assets/images/places/GRADnet_Award.jpeg" alt="Austen Wallis receiving an award at GRADnet 2024">
+          <figure class="bp-place">
+            <a class="bp-photo-open" href="./assets/images/places/web/gradnet-award.jpg" aria-label="Enlarge photo: GRADnet Award" data-gallery-open><img loading="lazy" decoding="async" src="./assets/images/places/web/gradnet-award.jpg" alt="Austen Wallis receiving an award at GRADnet 2024" width="1400" height="931"><span class="bp-photo-expand" aria-hidden="true"><svg class="bp-icon " aria-hidden="true" viewBox="0 0 24 24"><use href="./assets/icons/lucide.svg#maximize-2"></use></svg></span></a>
             <figcaption>
-              <span class="place-meta">Award</span>
+              <span class="bp-eyebrow">Award</span>
               <h3>GRADnet Award</h3>
-              <p>Receiving the Best PhD Poster award at the SEPnet Employers Exhibition during GRADnet 2024.</p>
+              <p>Best PhD Poster at the SEPnet Employers Exhibition, 2024.</p>
             </figcaption>
           </figure>
 
-          <figure class="place-card">
-            <img src="./assets/images/places/GRADnet2024.JPG" alt="Group photo at GRADnet 2024">
+          <figure class="bp-place">
+            <a class="bp-photo-open" href="./assets/images/places/web/gradnet.jpg" aria-label="Enlarge photo: GRADnet 2024" data-gallery-open><img loading="lazy" decoding="async" src="./assets/images/places/web/gradnet.jpg" alt="Group photo at GRADnet 2024" width="1400" height="985"><span class="bp-photo-expand" aria-hidden="true"><svg class="bp-icon " aria-hidden="true" viewBox="0 0 24 24"><use href="./assets/icons/lucide.svg#maximize-2"></use></svg></span></a>
             <figcaption>
-              <span class="place-meta">Network event</span>
+              <span class="bp-eyebrow">Network event</span>
               <h3>GRADnet 2024</h3>
-              <p>A snapshot from the wider graduate-research community surrounding my PhD years in Southampton.</p>
+              <p>The graduate-research community at GRADnet 2024.</p>
             </figcaption>
           </figure>
 
-          <figure class="place-card">
-            <img src="./assets/images/places/STEM_4_Britian_2026.JPG" alt="Austen Wallis at STEM for Britain 2026">
+          <figure class="bp-place">
+            <a class="bp-photo-open" href="./assets/images/places/web/stem-for-britain.jpg" aria-label="Enlarge photo: STEM for Britain 2026" data-gallery-open><img loading="lazy" decoding="async" src="./assets/images/places/web/stem-for-britain.jpg" alt="Austen Wallis at STEM for Britain 2026" width="933" height="1400"><span class="bp-photo-expand" aria-hidden="true"><svg class="bp-icon " aria-hidden="true" viewBox="0 0 24 24"><use href="./assets/icons/lucide.svg#maximize-2"></use></svg></span></a>
             <figcaption>
-              <span class="place-meta">Showcase</span>
+              <span class="bp-eyebrow">Showcase</span>
               <h3>STEM for Britain 2026</h3>
-              <p>Presenting research in the UK Parliament during STEM for Britain, with MPs attending to engage with the work directly.</p>
+              <p>Presenting research at the UK Parliament.</p>
             </figcaption>
           </figure>
 
-          <figure class="place-card place-card-feature place-card-feature-right">
-            <img src="./assets/images/places/STAG%20PRIZE.png" alt="Austen Wallis receiving the STAG Research Prize">
+          <figure class="bp-place">
+            <a class="bp-photo-open" href="./assets/images/places/web/stag-prize.jpg" aria-label="Enlarge photo: STAG Research Prize" data-gallery-open><img loading="lazy" decoding="async" src="./assets/images/places/web/stag-prize.jpg" alt="Austen Wallis receiving the STAG Research Prize" width="1400" height="1397"><span class="bp-photo-expand" aria-hidden="true"><svg class="bp-icon " aria-hidden="true" viewBox="0 0 24 24"><use href="./assets/icons/lucide.svg#maximize-2"></use></svg></span></a>
             <figcaption>
-              <span class="place-meta">Award</span>
+              <span class="bp-eyebrow">Award</span>
               <h3>STAG Research Prize</h3>
-              <p>Receiving the award for Best Publication in Astrophysics.</p>
+              <p>Best Publication in Astrophysics, 2025.</p>
             </figcaption>
           </figure>
 
-          <figure class="place-card place-card-feature place-card-feature-full place-card-3mt">
-            <img src="./assets/images/places/FEPS_3MT_runner_up.jpg" alt="Austen Wallis receiving the FEPS 3 Minute Thesis runner-up prize">
+          <figure class="bp-place">
+            <a class="bp-photo-open" href="./assets/images/places/web/three-minute-thesis.jpg?v=photo-fix-1" aria-label="Enlarge photo: FEPS 3MT Runner-Up" data-gallery-open><img loading="lazy" decoding="async" src="./assets/images/places/web/three-minute-thesis.jpg?v=photo-fix-1" alt="Austen Wallis receiving the FEPS 3 Minute Thesis runner-up prize" width="1400" height="1232"><span class="bp-photo-expand" aria-hidden="true"><svg class="bp-icon " aria-hidden="true" viewBox="0 0 24 24"><use href="./assets/icons/lucide.svg#maximize-2"></use></svg></span></a>
             <figcaption>
-              <span class="place-meta">Award talk</span>
+              <span class="bp-eyebrow">Award talk</span>
               <h3>FEPS 3MT Runner-Up</h3>
-              <p>Runner-up prize in the Faculty of Engineering and Physical Sciences 3 Minute Thesis competition for "Accelerating Astronomical Discoveries with AI Emulators".</p>
+              <p>FEPS 3 Minute Thesis runner-up: “Accelerating Astronomical Discoveries with AI Emulators”.</p>
             </figcaption>
-          </figure>
+          </figure></div>
         </section>
-      </article>
-
-      <article class="page-section" data-page="contact" id="contact" hidden>
-        <section class="section-header">
-          <p class="section-kicker">Contact</p>
-          <h2>Open to research conversations, collaboration, and technical discussion.</h2>
-          <p class="section-intro">
-            For research collaboration, speaking, or technical work, email is the fastest route.
-          </p>
-        </section>
-
-        <section class="contact-grid">
-          <div class="info-card">
-            <p class="kicker-chip">Reach out</p>
-            <h3>Best ways to contact me</h3>
-            <ul class="contact-list">
-              <li>
-                <span>Email</span>
-                <a href="mailto:agww2@cam.ac.uk">agww2@cam.ac.uk</a>
-              </li>
-              <li>
-                <span>Affiliation</span>
-                <p><a href="https://www.ast.cam.ac.uk/people/austen.wallis" target="_blank" rel="noopener noreferrer">Institute of Astronomy, University of Cambridge</a></p>
-              </li>
-              <li>
-                <span>LinkedIn</span>
-                <a href="https://linkedin.com/in/austenwallis" target="_blank" rel="noopener noreferrer">linkedin.com/in/austenwallis</a>
-              </li>
-              <li>
-                <span>GitHub</span>
-                <a href="https://github.com/AustenWallis" target="_blank" rel="noopener noreferrer">github.com/AustenWallis</a>
-              </li>
-              <li>
-                <span>Hugging Face</span>
-                <a href="https://huggingface.co/AustenWallis" target="_blank" rel="noopener noreferrer">huggingface.co/AustenWallis</a>
-              </li>
-              <li>
-                <span>ORCID</span>
-                <a href="https://orcid.org/0000-0003-0770-9015" target="_blank" rel="noopener noreferrer">0000-0003-0770-9015</a>
-              </li>
-            </ul>
+        <section class="bp-panel bp-other" data-panel="cv" id="cv" aria-labelledby="cv-title">
+          <div class="bp-section-heading"><h2 id="cv-title" class="bp-section-title">Curriculum vitae</h2><a class="bp-download" href="./Academic_CV.pdf?v=email-2026-10-12" type="application/pdf" download="Academic_CV.pdf"><svg class="bp-icon " aria-hidden="true" viewBox="0 0 24 24"><use href="./assets/icons/lucide.svg#download"></use></svg>Download CV <span class="bp-file-type">PDF</span></a></div>
+          <nav class="bp-cv-nav bp-js-control" aria-label="CV sections"><button type="button" data-scroll-target="experience-title">Experience</button><button type="button" data-scroll-target="education-title">Education</button><button type="button" data-scroll-target="awards-title">Awards</button><button type="button" data-scroll-target="tools-title">Toolkit</button></nav>
+          <section class="bp-cv-section" aria-labelledby="experience-title">
+            <h3 id="experience-title">Research &amp; industry</h3>
+            <ol class="bp-cv-list">
+              <li class="bp-cv-entry"><div class="bp-cv-meta"><p class="bp-date">Sep 2026 — present</p><div class="bp-cv-logos"><img class="bp-org-logo bp-org-logo--cambridge" src="./assets/images/organisations/cambridge.svg" alt="University of Cambridge" width="211" height="44" loading="lazy" decoding="async"></div></div><div class="bp-cv-body"><h4>Research Assistant in Exoplanetary Remote Sensing and Data Science</h4><p class="bp-institution">Institute of Astronomy, University of Cambridge</p><p>Modelling M-dwarf spectra and stellar variability to support exoplanet-atmosphere inference with JWST observations.</p></div></li>
+              <li class="bp-cv-entry"><div class="bp-cv-meta"><p class="bp-date">Sep 2022 — present</p><div class="bp-cv-logos"><img class="bp-org-logo bp-org-logo--southampton" src="./assets/images/organisations/southampton.svg" alt="University of Southampton" width="1251" height="346" loading="lazy" decoding="async"></div></div><div class="bp-cv-body"><h4>Postgraduate Researcher</h4><p class="bp-institution">University of Southampton</p><p>Developing SPECULATE, simulation emulators and spectral diagnostics for accretion outflows as part of my doctoral research.</p></div></li>
+              <li class="bp-cv-entry"><div class="bp-cv-meta"><p class="bp-date">Jun — Sep 2025</p><div class="bp-cv-logos"><img class="bp-org-logo bp-org-logo--ibm" src="./assets/images/organisations/ibm.svg" alt="IBM" width="50" height="21" loading="lazy" decoding="async"></div></div><div class="bp-cv-body"><h4>AI Research Scientist</h4><p class="bp-institution">IBM Research, Daresbury</p><p>Non-gradient optimisation in PDE solution spaces and synthetic weather data for the IBM–NASA Prithvi effort.</p></div></li>
+              <li class="bp-cv-entry"><div class="bp-cv-meta"><p class="bp-date">Jun — Sep 2024</p><div class="bp-cv-logos"><img class="bp-org-logo bp-org-logo--ukaea" src="./assets/images/organisations/ukaea.svg" alt="UK Atomic Energy Authority" width="248" height="248" loading="lazy" decoding="async"></div></div><div class="bp-cv-body"><h4>Machine Learning Research Scientist</h4><p class="bp-institution">UK Atomic Energy Authority, Culham</p><p>A deep-ensemble surrogate for plasma-pressure prediction, combining fast predictions with uncertainty estimates.</p></div></li>
+              <li class="bp-cv-entry"><div class="bp-cv-meta"><p class="bp-date">Jan — Jun 2019</p><div class="bp-cv-logos"><img class="bp-org-logo bp-org-logo--iac" src="./assets/images/organisations/iac.svg" alt="Instituto de Astrofísica de Canarias" width="245" height="245" loading="lazy" decoding="async"><img class="bp-org-logo bp-org-logo--la-laguna" src="./assets/images/organisations/la-laguna.png" alt="University of La Laguna" width="412" height="100" loading="lazy" decoding="async"></div></div><div class="bp-cv-body"><h4>Student Researcher</h4><p class="bp-institution">Instituto de Astrofísica de Canarias &amp; University of La Laguna</p><p>Studying Jupiter's mass and rotational flattening, with observatory experience on the IAC-80, TCS and Mons telescopes.</p></div></li>
+            </ol>
+          </section>
+          <section class="bp-cv-section" aria-labelledby="education-title">
+            <h3 id="education-title">Education</h3>
+            <ol class="bp-cv-list">
+              <li class="bp-cv-entry"><div class="bp-cv-meta"><p class="bp-date">Sep 2022 — present</p><div class="bp-cv-logos"><img class="bp-org-logo bp-org-logo--southampton" src="./assets/images/organisations/southampton.svg" alt="University of Southampton" width="1251" height="346" loading="lazy" decoding="async"></div></div><div class="bp-cv-body"><h4>PhD candidate in Astrophysics</h4><p class="bp-institution">University of Southampton</p><p>Thesis: <em>Emulator-based inference of imperfect and complex astrophysical models: Reducing Millions of Computational Hours to Minutes.</em></p></div></li>
+              <li class="bp-cv-entry"><div class="bp-cv-meta"><p class="bp-date">Sep 2017 — Jul 2021</p><div class="bp-cv-logos"><img class="bp-org-logo bp-org-logo--southampton" src="./assets/images/organisations/southampton.svg" alt="University of Southampton" width="1251" height="346" loading="lazy" decoding="async"></div></div><div class="bp-cv-body"><h4>MPhys in Astrophysics with a Year of Research</h4><p class="bp-institution">University of Southampton · first class honours</p><p>Final-year research on calibrating a cosmological standard candle using active galactic nuclei.</p></div></li>
+            </ol>
+          </section>
+          <div class="bp-cv-columns">
+            <section class="bp-cv-section" aria-labelledby="teaching-title"><h3 id="teaching-title">Teaching &amp; talks</h3><ul class="bp-copy-list"><li>PHYS2022: scientific Python and data analysis.</li><li>PHYS2011: astronomy design and observation.</li><li>Southampton Astrodome outreach.</li><li>Talks at RAS ML/AI Astronomy, PyData Southampton, PyData London and Trinity College Dublin.</li></ul></section>
+            <section class="bp-cv-section" aria-labelledby="awards-title"><h3 id="awards-title">Selected awards</h3><ul class="bp-copy-list"><li><span>2026</span> FEPS 3 Minute Thesis runner-up.</li><li><span>2025</span> STAG Research Prize for Best Publication in Astrophysics.</li><li><span>2024</span> Best PhD Poster, SEPnet Employers Exhibition.</li><li><span>2024</span> Second place, DISCnet LIV.INNO ML Kaggle competition.</li></ul></section>
           </div>
-
-          <form class="contact-form" data-contact-form>
-            <h3>Send a message</h3>
-
-            <label class="field">
-              <span>Name</span>
-              <input type="text" name="name" autocomplete="name" required>
-            </label>
-
-            <label class="field">
-              <span>Email</span>
-              <input type="email" name="email" autocomplete="email" required>
-            </label>
-
-            <label class="field">
-              <span>Subject</span>
-              <input type="text" name="subject" required>
-            </label>
-
-            <label class="field">
-              <span>Message</span>
-              <textarea name="message" rows="6" required></textarea>
-            </label>
-
-            <button class="button button-primary button-full" type="submit" data-form-btn disabled>Open email draft</button>
-            <p class="footer-note">Opens a pre-filled email draft.</p>
-          </form>
+          <section class="bp-cv-section" aria-labelledby="tools-title"><h3 id="tools-title">Technical toolkit</h3><dl class="bp-toolkit"><div><dt>Modelling</dt><dd>Emulators, Bayesian inference, Gaussian processes, ensembles, MCMC and time series.</dd></div><div><dt>Code</dt><dd>Python, C and Julia; PyTorch, TensorFlow, JAX, NumPy and SciPy.</dd></div><div><dt>Data</dt><dd>Pandas, Polars, Dask, Xarray, Matplotlib and Vega-Altair.</dd></div><div><dt>Workflow</dt><dd>Linux, Git, SLURM, LSF, Jupyter, Marimo and Streamlit.</dd></div></dl></section>
+          <p class="bp-cv-publications"><a class="bp-text-link" href="#publications" data-page="publications">Browse publications <svg class="bp-icon " aria-hidden="true" viewBox="0 0 24 24"><use href="./assets/icons/lucide.svg#arrow-right"></use></svg></a></p>
         </section>
-      </article>
-    </main>
+        <footer class="bp-details">
+          <a class="bp-contact" href="mailto:a.wallis@ast.cam.ac.uk"><svg class="bp-icon " aria-hidden="true" viewBox="0 0 24 24"><use href="./assets/icons/lucide.svg#mail"></use></svg><span>Get in touch<span class="bp-contact-email">a.wallis@ast.cam.ac.uk</span></span><svg class="bp-icon " aria-hidden="true" viewBox="0 0 24 24"><use href="./assets/icons/lucide.svg#arrow-up-right"></use></svg></a>
+          <span class="bp-footer-signature">Austen Wallis<span>Cambridge, UK</span></span>
+        </footer>
+      </main>
+      <dialog class="bp-lightbox" aria-labelledby="gallery-title">
+        <div class="bp-lightbox-top"><span class="bp-gallery-count"></span><button type="button" class="bp-icon-button" data-gallery-close aria-label="Close photo"><svg class="bp-icon " aria-hidden="true" viewBox="0 0 24 24"><use href="./assets/icons/lucide.svg#x"></use></svg></button></div>
+        <img class="bp-lightbox-image" alt="">
+        <div class="bp-lightbox-bottom"><button type="button" class="bp-icon-button" data-gallery-previous aria-label="Previous photo"><svg class="bp-icon " aria-hidden="true" viewBox="0 0 24 24"><use href="./assets/icons/lucide.svg#arrow-left"></use></svg></button><div aria-live="polite"><h2 id="gallery-title"></h2><p class="bp-gallery-caption"></p></div><button type="button" class="bp-icon-button" data-gallery-next aria-label="Next photo"><svg class="bp-icon " aria-hidden="true" viewBox="0 0 24 24"><use href="./assets/icons/lucide.svg#arrow-right"></use></svg></button></div>
+      </dialog>
+    </div>
+    <div class="bp-pet-layer" hidden>
+      <canvas class="bp-pet-embers" aria-hidden="true"></canvas>
+      <button class="bp-pet" type="button" aria-label="Star pet" aria-describedby="pet-help" title="Drag to throw · Click for a flare" data-expression="idle">
+        <span class="bp-pet-body" aria-hidden="true">
+          <img src="./assets/images/pet/star-idle.webp" data-face="idle" alt="" width="320" height="320" draggable="false">
+          <img src="./assets/images/pet/star-held.webp" data-face="held" alt="" width="320" height="320" draggable="false">
+          <img src="./assets/images/pet/star-flying.webp" data-face="flying" alt="" width="320" height="320" draggable="false">
+          <img src="./assets/images/pet/star-sleepy.webp" data-face="sleepy" alt="" width="320" height="320" draggable="false">
+        </span>
+      </button>
+      <span class="bp-sr-only" id="pet-help">Drag to move and throw. Arrow keys move; Shift and an arrow throws. Enter or Space makes a flare. Escape turns the pet off.</span>
+    </div>
   </div>
-
-  <script src="./assets/js/script.js"></script>
+  <script type="application/json" data-work-data>{"count": 7, "updated": "2026-10-09", "works": [{"title": "Optical outburst evolution of the transient black hole X-ray binary Swift J1727.8−1613: disc response to jet ejections and late-outburst emergence of powerful disc winds", "type": "journal-article", "date": "2026-07-25", "meta": "Monthly Notices of the Royal Astronomical Society · 2026", "link": "https://doi.org/10.1093/mnras/stag1175"}, {"title": "Sirocco", "type": "software", "date": "2026-05-22", "meta": "Zenodo · 2026", "link": "https://doi.org/10.5281/zenodo.13969075"}, {"title": "Radiation-ionization hydrodynamic simulations of AGN line-driven winds lead to transient shielding and BAL/UFO signatures", "type": "journal-article", "date": "2026-04-24", "meta": "Monthly Notices of the Royal Astronomical Society · 2026", "link": "https://doi.org/10.1093/mnras/stag592"}, {"title": "The critical role of clumping in line-driven disc winds", "type": "journal-article", "date": "2025-12-22", "meta": "Monthly Notices of the Royal Astronomical Society · 2025", "link": "https://doi.org/10.1093/mnras/staf2183"}, {"title": "A diagnostic kit for optical emission lines shaped by accretion disc winds", "type": "journal-article", "date": "2025-09-16", "meta": "Monthly Notices of the Royal Astronomical Society · 2025", "link": "https://doi.org/10.1093/mnras/staf1450"}, {"title": "Monte Carlo radiation hydrodynamic simulations of line-driven disc winds: relaxing the isothermal approximation", "type": "journal-article", "date": "2025-07-21", "meta": "Monthly Notices of the Royal Astronomical Society · 2025", "link": "https://doi.org/10.1093/mnras/staf1101"}, {"title": "SIROCCO: a publicly available Monte Carlo ionization and radiative transfer code for astrophysical outflows", "type": "journal-article", "date": "2024-12-04", "meta": "Monthly Notices of the Royal Astronomical Society · 2024", "link": "https://doi.org/10.1093/mnras/stae2677"}]}</script>
+  <script src="./assets/js/script.js?v=stable-pages-1" defer></script>
+  <script src="./assets/js/systems-physics.js?v=observatory-3" defer></script>
+  <script src="./assets/js/systems.js?v=stable-pages-1" defer></script>
+  <script src="./assets/js/pet-physics.js?v=star-pet-1" defer></script>
+  <script src="./assets/js/pet.js?v=star-pet-1" defer></script>
 </body>
-
 </html>
